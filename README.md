@@ -1,9 +1,9 @@
 # CSAICSBTeam014
 CSAICSBTeam014
 
-TEAM NAME: 
+TEAM NAME: Code Debuggers
 
-TEAM IDEA:
+TEAM IDEA: Make My Trip Clone
 
 TEAM MEMBERS:
 
