@@ -7,7 +7,7 @@ TEAM IDEA:
 
 TEAM MEMBERS:
 
-  Tanish Moral Tanishmoral11 ishantmoral@gmail.com LCB2023045
+  Tanish Moral TanishMoral11 ishantmoral@gmail.com LCB2023045
 
   LAKSHYA AGARWAL Lakshya0000 agarwallakshya94@gmail.com LCI2023058
 
