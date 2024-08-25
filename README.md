@@ -13,6 +13,8 @@ TEAM MEMBERS:
 
   PIYUSH NAYAK PIYUSH-NAYAK piyushnayak90020@gmail.com LCB2023050
 
+  AMRITANSHU PRIYDARSHI HeyAmrit lcb2023046@iiitl.ac.in LCB2023046
+
   LAVISH SHAKYA lavishshakya lavishshakya066@gmail.com LCB2023035
 
   KHUSHAL   khushalmidha    khushalmidha24@gmail.com  LCI2023048
