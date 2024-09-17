@@ -16,4 +16,5 @@
 | Khushal             | [khushalmidha](https://github.com/khushalmidha)    | khushalmidha24@gmail.com         | LCI2023048    |
 | Utkarsh Srivastava  | [Utkarsh-Srivastava29](https://github.com/Utkarsh-Srivastava29) | stutkarsh291@gmail.com | LCI2023034    |
 
-**Click here for Issue for Approval:** [Click Here](https://github.com/IIITLucknowSWEngg/Assignment/issues/9)
+
+**Issue Link:** [Issue](https://github.com/IIITLucknowSWEngg/Assignment/issues/9)
