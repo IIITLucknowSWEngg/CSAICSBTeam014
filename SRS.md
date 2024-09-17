@@ -60,3 +60,76 @@ The application will be a web-based and mobile platform providing travel-related
 - Availability of third-party services for booking travel.
 - Compliance with legal regulations for data protection.
 
+
+ ## 3. Functional Requirements
+
+### 3.1 User Registration/Login
+- *Description*: Users should be able to register and log in using their email addresses or social media accounts.
+- *Inputs*: User email, password, or social media credentials.
+- *Outputs*: User account creation, login status, error messages.
+
+### 3.2 Search Functionality
+- *Description*: Users should be able to search for flights, hotels, and car rentals using various filters like date, location, price, etc.
+- *Inputs*: Search criteria (destination, dates, price range).
+- *Outputs*: List of search results with options to view details.
+
+### 3.3 Booking
+- *Description*: Users should be able to book flights, hotels, and car rentals. Confirmation details should be sent via email.
+- *Inputs*: Booking details (travel dates, destination, personal information).
+- *Outputs*: Booking confirmation, receipt.
+
+### 3.4 Payment Processing
+- *Description*: Secure processing of payments through integrated payment gateways.
+- *Inputs*: Payment details (credit card information, billing address).
+- *Outputs*: Payment confirmation, transaction receipt.
+
+### 3.5 User Profile Management
+- *Description*: Users should be able to view and update their profiles and booking history.
+- *Inputs*: User profile details, booking history.
+- *Outputs*: Updated profile information, booking history.
+
+### 3.6 Admin Dashboard
+- *Description*: Admins should have access to tools for managing users, bookings, and application content.
+- *Inputs*: Admin credentials, management commands.
+- *Outputs*: Management reports, user and booking data.
+
+## 4. Non-Functional Requirements
+
+### 4.1 Performance
+- *Response Time*: The system should respond to user requests within 2 seconds.
+- *Scalability*: The application should handle up to 10,000 concurrent users without performance degradation.
+
+### 4.2 Security
+- *Data Protection*: Sensitive user data (e.g., payment details) must be encrypted during transmission and storage.
+- *Authentication*: Implement secure authentication mechanisms, such as OAuth2 for third-party integrations.
+- *Authorization*: Role-based access control to manage permissions for users and admins.
+
+### 4.3 Usability
+- *User Interface*: The UI should be intuitive and user-friendly, ensuring easy navigation and interaction.
+- *Accessibility*: The application should comply with WCAG 2.1 accessibility standards to support users with disabilities.
+
+### 4.4 Reliability
+- *Availability*: The system should be available 99.9% of the time, excluding scheduled maintenance.
+- *Backup*: Regular backups of user data should be performed to prevent data loss.
+
+### 4.5 Maintainability
+- *Code Quality*: The code should be well-documented, modular, and adhere to best practices to facilitate maintenance and updates.
+- *Updates*: The system should support easy updates and maintenance with minimal downtime.
+
+### 4.6 Portability
+- *Cross-Platform Compatibility*: The application should be compatible with various operating systems and devices, including iOS, Android, and major web browsers.
+
+### 4.7 Compliance
+- *Regulatory Compliance*: The system must adhere to legal and regulatory requirements, including data protection laws like GDPR.
+
+## 5. Other Requirements
+
+### 5.1 Data Requirements
+- *Database Schema*: The database should be designed to handle user profiles, booking details, and transaction records efficiently.
+
+### 5.2 Interface Requirements
+- *APIs*: Define the interfaces for third-party integrations (e.g., flight, hotel, and car rental APIs) and internal components (e.g., user management).
+
+### 5.3 Environmental Requirements
+- *Hosting*: The application should be hosted on reliable cloud services with scalability options to handle varying user loads.
+
