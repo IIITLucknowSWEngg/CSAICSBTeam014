@@ -95,3 +95,21 @@ The "Make My Trip Clone" is a comprehensive travel booking platform designed to 
 - Approve or remove user reviews and comments.
 - View analytics on user activity and bookings.
 - Monitor customer support tickets and resolution status.
+
+### Excluded Features:
+
+#### 1. Advanced Travel Insurance:
+- No advanced insurance plans or partnerships with insurance companies beyond basic coverage.
+
+#### 2. Multi-Platform Launch:
+- Initial focus will be on one platform (e.g., Android) and exclude iOS or web versions during the initial phase.
+
+#### 3. Travel Blogs and Guides:
+- Excludes travel guides, blogs, or editorial content recommendations for destinations.
+
+#### 4. Flight Tracking:
+- No live tracking of flights or integration with real-time air traffic data.
+
+#### 5. International Roaming SIMs:
+- No support for selling or offering international roaming SIM cards.
+
