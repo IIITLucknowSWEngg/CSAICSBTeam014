@@ -95,3 +95,55 @@ The application will function as a comprehensive travel booking solution, enabli
 - **Customization**:
   - Allow users to set preferences for search results, such as preferred airlines, hotel chains, or package options.
   - Provide options for users to save and manage their favorite destinations and travel preferences.
+
+## 3. Non-Functional Requirements
+
+### 3.1 Performance
+- **Response Time**: The application should have a response time of less than 2 seconds for search queries and booking operations.
+- **Load Handling**: Capable of handling up to 10,000 concurrent users without performance degradation.
+- **Scalability**: The system should be scalable to handle increasing user traffic and data volume.
+
+### 3.2 Usability
+- **User Interface**:
+  - **Design**: A clean, intuitive design that enhances user experience and simplifies navigation.
+  - **Accessibility**: Compliance with WCAG (Web Content Accessibility Guidelines) to ensure the application is accessible to users with disabilities.
+  - **Language Support**: Provide multi-language support to cater to users from different regions.
+- **Mobile Responsiveness**: The application should be fully functional and visually appealing on various devices including smartphones and tablets.
+
+### 3.3 Security
+- **Data Protection**:
+  - **Compliance**: Adherence to data protection regulations such as GDPR for user data privacy and security.
+  - **Encryption**: Use of SSL/TLS encryption for data transmission and secure storage of sensitive information.
+  - **Data Backup**: Regular backup of user data and secure storage practices.
+- **Authentication**:
+  - Implement robust authentication mechanisms including multi-factor authentication (MFA) for enhanced security.
+  - Regular security audits and vulnerability assessments.
+
+### 3.4 Reliability
+- **Availability**: The application should achieve a minimum uptime of 99.9%, with reliable and continuous access for users.
+- **Backup and Recovery**:
+  - Regular backups of data and a recovery plan to handle data loss or system failures.
+  - Disaster recovery plan to restore operations in case of major incidents.
+
+### 3.5 Maintainability
+- **Code Quality**: Maintain clean, well-documented code that adheres to best practices and coding standards.
+- **Documentation**:
+  - Comprehensive documentation for both end-users and developers, including system architecture, API documentation, and user guides.
+  - Version control for tracking changes and managing updates.
+
+## 4. Constraints
+- **Third-Party Integration**: The application will rely on third-party APIs for flight and hotel data, which may impact functionality based on their availability and reliability.
+- **Compliance**: Adherence to legal and regulatory requirements relevant to the travel industry and data protection.
+- **Budget and Timeline**: Project development may be constrained by budget and timeline considerations.
+
+## 5. Assumptions
+- **Internet Access**: Users will have reliable internet access to use the application.
+- **Web Browsers**: The application will be compatible with major web browsers (e.g., Chrome, Firefox, Safari, Edge).
+- **Payment Gateways**: Integration with established payment gateways that provide secure transaction processing.
+- **Regulatory Changes**: The application will adapt to changes in travel regulations and data protection laws.
+
+## 6. Glossary
+- **API**: Application Programming Interface, a set of tools and protocols for building software applications.
+- **GDPR**: General Data Protection Regulation, a regulation in EU law on data protection and privacy.
+- **PCI DSS**: Payment Card Industry Data Security Standard, a set of security standards designed to protect payment card information.
+- **MFA**: Multi-Factor Authentication, a security system that requires more than one form of verification to
