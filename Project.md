@@ -112,4 +112,18 @@ The "Make My Trip Clone" is a comprehensive travel booking platform designed to 
 
 #### 5. International Roaming SIMs:
 - No support for selling or offering international roaming SIM cards.
+  
+#### 6. Multi-Language Support:
+- Only supports English interface and content, no multi-language options.
 
+#### 7. Visa Assistance:
+- Excludes visa processing or documentation assistance services.
+
+#### 8. AI-Based Personalization:
+- No AI-driven personalization of recommendations based on previous bookings or user behavior.
+
+#### 9. Vacation Home Rentals:
+- Excludes the ability to book vacation homes or Airbnbs.
+
+#### 10. Group Travel Planner:
+- No advanced tools for planning large group trips with multiple users collaborating on a single itinerary.
