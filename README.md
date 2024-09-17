@@ -1,10 +1,12 @@
 # CSAICSBTeam014
 
-**Team Name:** Code Debuggers
+### **Team Name:** Code Debuggers
 
-**Team Idea:** Make My Trip Clone
+### **Team Idea:** Make My Trip Clone
 
-**Team Members:**
+### **Issue Link:** [Issue](https://github.com/IIITLucknowSWEngg/Assignment/issues/9)
+
+## **Team Members:**
 
 | Name                | GitHub ID                                          | Email                           | Enrolment No. |
 |---------------------|----------------------------------------------------|---------------------------------|---------------|
@@ -17,4 +19,4 @@
 | Utkarsh Srivastava  | [Utkarsh-Srivastava29](https://github.com/Utkarsh-Srivastava29) | stutkarsh291@gmail.com | LCI2023034    |
 
 
-**Issue Link:** [Issue](https://github.com/IIITLucknowSWEngg/Assignment/issues/9)
+
