@@ -18,5 +18,5 @@ This document identifies the primary stakeholders involved in the MakeMyTrip.com
 | **Cloud and Hosting Providers** | Manage the infrastructure and data hosting.                              | Ensuring uptime, scalability, and security of the platform.                                                           | High. The platform's speed, reliability, and user experience depend on cloud services. |
 | **Travel Insurance Providers**  | Offers travel-related insurance options for users.                       | Integrating insurance products into the booking process, managing claims and customer support.                          | Medium. Adds value to the user experience, improving trust and satisfaction.     |
 | **Regulators and Government Authorities** | Ensure compliance with travel laws and data protection regulations. | Monitoring platform compliance with regional laws, taxes, and data privacy regulations.                               | High. Failure to comply can result in legal consequences and disrupt operations. |
-| **Competitors**                 | Other travel booking platforms.                                           | Competing for market share, pricing, services, and user experience.                                                    | Medium. Drives innovation, competitive pricing, and feature differentiation.     |
+
 
