@@ -27,7 +27,7 @@
     <td><a href="https://github.com/Lakshya0000"><img src="https://img.shields.io/badge/GitHub-Profile-blue?style=flat&logo=github"></a></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/identicons/TanishMoral.png" width="60px" height="60px"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/134790673?v=4&size=64" width="60px" height="60px"></td>
     <td>Tanish Moral</td>
     <td>LCB2023045</td>
     <td><a href="mailto:ishantmoral@gmail.com">ishantmoral@gmail.com</a></td>
