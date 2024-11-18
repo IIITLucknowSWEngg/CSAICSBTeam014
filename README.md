@@ -69,3 +69,68 @@
     <td><a href="https://github.com/Utkarsh-Srivastava29"><img src="https://img.shields.io/badge/GitHub-Profile-blue?style=flat&logo=github"></a></td>
   </tr>
 </table>
+
+## 📋 Project Overview
+
+### Project Title
+**Make My Trip Clone**
+
+### Description
+The **Make My Trip Clone** is a comprehensive travel booking platform designed to replicate the functionalities of popular travel booking sites while enhancing user experience. The project provides seamless booking options for flights, hotels, holiday packages, buses, trains, and car rentals, along with managing itineraries and accessing customer support.
+
+### Project Scope
+- **Included Features:**
+  1. **User Registration and Authentication**: Email/phone sign-up, social logins, password reset.
+  2. **Flight Booking**: Search, filter, multi-city support, seat selection, extra services.
+  3. **Hotel Booking**: Search, filter by amenities/price, real-time availability, wish list.
+  4. **Holiday Packages**: Browse, customize, group bookings, cancellation policies.
+  5. **Bus and Train Booking**: View schedules, seat availability, filter by type.
+  6. **Car Rentals**: Filter by type, view provider details, add extra services.
+  7. **Payment Gateway**: Multiple payment options, secure transactions, EMI support.
+  8. **Booking Management**: Modify/cancel bookings, email confirmations.
+  9. **Trip Itinerary**: Downloadable itinerary, add custom trip details.
+  10. **Notifications**: Push alerts for bookings, offers, and updates.
+  11. **Customer Support**: Real-time chat, support tickets, FAQ.
+  12. **User Reviews and Ratings**: Leave feedback, filter by ratings.
+  13. **Loyalty Program**: Earn and redeem reward points.
+  14. **Admin Panel**: Manage bookings, monitor activities, analytics.
+
+- **Excluded Features:**
+  1. Advanced travel insurance options.
+  2. Multi-platform support (initially).
+  3. Travel blogs/guides and real-time flight tracking.
+  4. Multi-language interface, visa assistance, vacation home bookings.
+  5. AI-driven personalization and collaborative trip planners.
+
+### 🔗 Project Approval
+- **Repository**: [GitHub Repository - Code Debuggers](https://github.com/YourRepoLink)
+
+## 🛠️ Assignment Deliverables
+
+### 1. Project Scope (`project.md`)
+   - Comprehensive details of the platform's scope.
+
+### 2. Stakeholder Analysis (`stake.md`)
+   - Identifies all stakeholders involved.
+
+### 3. User Requirements Document (`URD.md`)
+   - Outlines user requirements and features.
+
+### 4. Software Requirements Specification (`SRS.md`)
+   - Details on functional and non-functional requirements.
+
+## 📑 Files in Repository
+
+- **LICENSE**: MIT License information.
+- **README.md**: Project overview and team introduction.
+- **project.md**: Detailed project objectives.
+- **URD.md**: User needs and functionality.
+- **SRS.md**: Technical requirements.
+- **stake.md**: Analysis of involved parties.
+
+## 📝 License
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+<div align="center">
+Made with 💙 by Code Debuggers at IIIT Lucknow
+</div>
