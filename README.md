@@ -1,6 +1,6 @@
-# 🏆 Code Debuggers
-
 <div align="center">
+
+# 🏆 Code Debuggers
 
 ![Team Banner](https://img.shields.io/badge/Team-CSAICSBTeam014-blue)
 ![Project](https://img.shields.io/badge/Project-Make_My_Trip_Clone-orange)
@@ -8,6 +8,7 @@
 [![Status](https://img.shields.io/badge/Status-In_Development-yellow)]()
 
 </div>
+
 
 ## 👥 Team Members
 
@@ -103,7 +104,7 @@ The **Make My Trip Clone** is a comprehensive travel booking platform designed t
   5. AI-driven personalization and collaborative trip planners.
 
 ### 🔗 Project Approval
-- **Repository**: [GitHub Repository - Code Debuggers](https://github.com/YourRepoLink)
+- **Repository**: [GitHub Repository - Code Debuggers](https://github.com/IIITLucknowSWEngg/CSAICSBTeam014)
 
 ## 🛠️ Assignment Deliverables
 
@@ -119,6 +120,9 @@ The **Make My Trip Clone** is a comprehensive travel booking platform designed t
 ### 4. Software Requirements Specification (`SRS.md`)
    - Details on functional and non-functional requirements.
 
+## 📊 Team Contributions
+Each team member has made their initial contributions to the repository. You can view individual contributions through the [Contributors](https://github.com/IIITLucknowSWEngg/CSAICSBTeam014/graphs/contributors) page.
+
 ## 📑 Files in Repository
 
 - **LICENSE**: MIT License information.
@@ -126,10 +130,10 @@ The **Make My Trip Clone** is a comprehensive travel booking platform designed t
 - **project.md**: Detailed project objectives.
 - **URD.md**: User needs and functionality.
 - **SRS.md**: Technical requirements.
-- **stake.md**: Analysis of involved parties.
+- **Stakeholders.md**: Analysis of involved parties.
 
 ## 📝 License
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License. See [LICENSE](https://github.com/IIITLucknowSWEngg/CSAICSBTeam014/blob/main/LICENSE) for details.
 
 <div align="center">
 Made with 💙 by Code Debuggers at IIIT Lucknow
