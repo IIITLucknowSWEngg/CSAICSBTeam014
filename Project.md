@@ -136,3 +136,34 @@ graph TD
     B --> E[Database]  
     B --> F[Payment Gateway]  
     F --> G[Bank API]  
+
+
+
+### Key Components  
+
+- **Web Interface**: A React-based UI for desktop and mobile devices.  
+- **Backend Server**: Powered by Node.js and Express, ensuring seamless communication.  
+- **Authentication Service**: Securely handles user sessions with multi-factor authentication.  
+- **Booking Engine**: Coordinates flight, hotel, and package bookings.  
+- **Database**: Uses PostgreSQL for structured storage of user data and bookings.  
+- **Payment Gateway**: Ensures secure transactions via integrations with popular payment providers.  
+
+---
+
+## References & Inspiration  
+
+Our project draws inspiration from successful travel booking platforms, including:  
+
+1. **MakeMyTrip**: Known for its all-in-one travel solutions.  
+2. **Expedia**: Recognized for its intuitive interface and extensive options.  
+3. **Booking.com**: Offers unparalleled hotel search and filtering capabilities.  
+
+### Research Papers and Articles  
+
+- John, D. (2023). *"Travel Booking Systems: An Evolutionary Perspective."* International Journal of Travel Technology.  
+- Smith, R., & Zhang, W. (2022). *"Designing Scalable Travel Platforms for Modern Users."* IEEE Journal of Software Architecture.  
+
+<div align="center">  
+<i>Developed with ❤️ by Team InnovateCS</i>  
+</div>  
+
