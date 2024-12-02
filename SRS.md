@@ -1,4 +1,4 @@
-# Software Requirements Specification (SRS) for "Make My Trip" Clone
+Specification (SRS) for "Make My Trip" Clone
 
 ## 1. Introduction
 
@@ -231,5 +231,92 @@ APS7 --> UC7 : "Sanitize Inputs to Prevent Injection"
 Admin --> UC4 : "Access Admin Panel"
 Admin --> UC5 : "Oversee Cancellations"
 Admin --> UC7 : "Monitor Suspicious Activities"
+@enduml
+```
+## 5. Abuse Prevention System
+
+### Use Cases for Abuse Prevention
+#### **Brute Force Attack Prevention**
+- **Prevent Brute Force Attacks**: The system blocks repeated login attempts after a specified number of failed attempts.
+  
+#### **Booking and Payment Fraud Prevention**
+- **Validate Booking Details**: Ensure the booking details provided by the user are correct and valid.
+- **Detect Fraudulent Payment Patterns**: Monitor payment transactions for unusual or fraudulent activities.
+
+#### **Admin Security and Monitoring**
+- **Monitor Admin Login Attempts**: The system tracks and monitors suspicious admin login attempts.
+- **Blacklist Suspicious IPs**: Malicious IP addresses are blocked from accessing the system.
+
+#### **General Security Measures**
+- **Enable Two-Factor Authentication (2FA)**: Additional security layer for user login via 2FA.
+- **Implement Data Input Sanitization**: Prevent malicious code injection and ensure data integrity by sanitizing inputs.
+
+### Use Cases for Abuse by Malicious Users
+- **Brute Force Login**: A malicious user attempts to gain access through repeated login attempts.
+- **Submit Fake Bookings**: Malicious users try to exploit booking functionality by submitting fake or incorrect booking details.
+- **Fraudulent Payment Attempts**: Users attempt to make payments using stolen or invalid payment information.
+- **Unauthorized Admin Access**: Malicious users attempt to bypass admin login or perform unauthorized actions.
+- **Exploit Cancellation Policies**: Malicious users take advantage of cancellation policies for fraudulent refunds or bookings.
+- **Inject Malicious Data**: Users attempt to inject harmful code into the system to exploit security vulnerabilities.
+
+--- 
+![image](https://github.com/user-attachments/assets/578a8e2c-b652-4c21-9599-704ef7ba1ac8)
+
+```plantuml
+@startuml
+left to right direction
+
+actor "Legitimate User" as User
+actor "Malicious User" as Attacker
+actor "Administrator" as Admin
+
+rectangle "Make My Trip Clone" {
+    rectangle "Core Functionalities" as CF {
+        usecase "Register/Login" as UC1
+        usecase "Search & Book Services" as UC2
+        usecase "Make Secure Payments" as UC3
+        usecase "Access Admin Dashboard" as UC4
+        usecase "Cancel or Modify Booking" as UC5
+        usecase "View Booking History" as UC6
+        usecase "Manage User Profile" as UC7
+    }
+
+    rectangle "Abuse Prevention System" as APS {
+        usecase "Prevent Brute Force Attacks" as APS1
+        usecase "Validate Booking Details" as APS2
+        usecase "Detect Fraudulent Payment Patterns" as APS3
+        usecase "Monitor Admin Login Attempts" as APS4
+        usecase "Blacklist Suspicious IPs" as APS5
+        usecase "Enable Two-Factor Authentication (2FA)" as APS6
+        usecase "Implement Data Input Sanitization" as APS7
+    }
+}
+
+User --> UC1 : "Log In"
+User --> UC2 : "Search and Book Services"
+User --> UC3 : "Make Payments"
+User --> UC5 : "Cancel or Reschedule Booking"
+User --> UC6 : "View Booking History"
+User --> UC7 : "Update Profile"
+
+Attacker --> UC1 : "Brute Force Login"
+Attacker --> UC2 : "Submit Fake Bookings"
+Attacker --> UC3 : "Fraudulent Payment Attempts"
+Attacker --> UC4 : "Unauthorized Admin Access"
+Attacker --> UC5 : "Exploit Cancellation Policies"
+Attacker --> UC7 : "Inject Malicious Data"
+
+APS1 --> UC1 : "Block Repeated Failed Logins"
+APS2 --> UC2 : "Verify Booking Parameters"
+APS3 --> UC3 : "Analyze Payment Patterns"
+APS4 --> UC4 : "Restrict Admin Access by Role/IP"
+APS5 --> UC1 : "Blacklist Malicious IPs"
+APS6 --> UC1 : "Secure Login with 2FA"
+APS7 --> UC7 : "Sanitize Inputs to Prevent Injection"
+
+Admin --> UC4 : "Access Admin Panel"
+Admin --> UC5 : "Oversee Cancellations"
+Admin --> UC7 : "Monitor Suspicious Activities"
+
 @enduml
 ```
