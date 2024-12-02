@@ -137,8 +137,7 @@ graph TD
     B --> F[Payment Gateway]  
     F --> G[Bank API]  
 
-
-
+```
 ### Key Components  
 
 - **Web Interface**: A React-based UI for desktop and mobile devices.  
@@ -148,9 +147,9 @@ graph TD
 - **Database**: Uses PostgreSQL for structured storage of user data and bookings.  
 - **Payment Gateway**: Ensures secure transactions via integrations with popular payment providers.  
 
----
+---  
 
-## References & Inspiration  
+### References & Inspiration  
 
 Our project draws inspiration from successful travel booking platforms, including:  
 
@@ -165,5 +164,5 @@ Our project draws inspiration from successful travel booking platforms, includin
 
 <div align="center">  
 <i>Developed with ❤️ by Team InnovateCS</i>  
-</div>  
+</div>
 
