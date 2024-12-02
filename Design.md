@@ -46,8 +46,51 @@ The **Make My Trip Clone** adopts a distributed system architecture to handle a 
 3. **Database**: Stores relational data for users, bookings, and listings.
 
 ### Diagram 1: Overall System Architecture
+![image](https://github.com/user-attachments/assets/df4924eb-1579-4010-9145-8cb9c5ef0c0b)
 ```plantuml
+@startuml
+actor User
+actor Admin
 
+rectangle "Frontend" {
+    [Search Flights]
+    [Manage Bookings]
+    [Admin Dashboard]
+}
+
+rectangle "Backend" {
+    [API Gateway]
+    [Business Logic]
+    [Booking Service]
+    [User Management Service]
+    [Database Handler]
+}
+
+rectangle "External Services" {
+    [Payment Gateway]
+    [Flight APIs]
+    [Hotel APIs]
+}
+
+User --> [Search Flights]
+User --> [Manage Bookings]
+Admin --> [Admin Dashboard]
+
+[Search Flights] --> [API Gateway]
+[Manage Bookings] --> [API Gateway]
+[Admin Dashboard] --> [API Gateway]
+
+[API Gateway] --> [Business Logic]
+[Business Logic] --> [Booking Service]
+[Business Logic] --> [User Management Service]
+[Booking Service] --> Database: Query/Update Booking
+[User Management Service] --> Database: Query/Update User Data
+[Database Handler] --> Database: Query
+[Database Handler] --> [Payment Gateway]: Process Payment
+[Business Logic] --> [Flight APIs]: Fetch Flight Data
+[Business Logic] --> [Hotel APIs]: Fetch Hotel Data
+
+@enduml
 ```
 
 ---
@@ -132,9 +175,24 @@ The backend is designed as a **microservices-based system** using **Node.js** an
 - **Secure Authentication**: User sessions managed via JWT tokens.
 
 ### Diagram 3: Backend Architecture
+![image](https://github.com/user-attachments/assets/d2003f31-262a-4ef0-af2e-b21d1c2b4df9)
 ```plantuml
+@startuml
+actor Frontend
+actor Admin
 
+rectangle "Backend" {
+    [Authentication Service]
+    [Booking Service]
+    [Admin Service]
+    [Payment Service]
+}
 
+Frontend --> [Authentication Service]: Login/Register
+Frontend --> [Booking Service]: Book Flights/Hotels
+Frontend --> [Payment Service]: Process Payment
+Admin --> [Admin Service]: Manage System
+@enduml
 ```
 
 ---
