@@ -108,4 +108,129 @@ The system will be a full-stack solution combining a web-based interface and mob
 ### USECASE DIAGRAM
 ![PHOTO-2024-12-02-22-55-00](https://github.com/user-attachments/assets/69774f79-7da2-43b4-97d7-e6bd70edaa19)
 
+```PlantUml
+@startuml
+actor "Customer" as Customer
+actor "Travel Agent" as Agent
+actor "Payment Gateway" as PG
+actor "Admin" as Admin
 
+rectangle "MakeMyTrip System" as MakeMyTrip {
+  usecase "Search Flights/Hotels" as Search
+  usecase "Book Flights/Hotels" as Book
+  usecase "Cancel Booking" as Cancel
+  usecase "View Booking History" as History
+  usecase "Manage Account" as Manage
+  usecase "Apply Promo Code" as Promo
+  usecase "Generate Reports" as Reports
+  usecase "Assist Customer" as Assist
+  usecase "Handle Refunds" as Refund
+}
+
+Customer --> Search : "Initiate Search"
+Customer --> Book : "Proceed to Book"
+Customer --> Cancel : "Request Cancellation"
+Customer --> History : "Access Booking History"
+Customer --> Manage : "Update Profile"
+Customer --> Promo : "Apply Discounts"
+
+Agent --> Search : "Perform Search"
+Agent --> Book : "Assist Booking"
+Agent --> Assist : "Provide Support"
+
+Book --> PG : "Process Payment"
+Book --> Promo : "Validate Promo Code"
+Cancel --> Refund : "Initiate Refund"
+
+Admin --> Reports : "Analyze Data"
+Admin --> Assist : "Resolve Issues"
+Admin --> Refund : "Approve Refunds"
+@enduml
+```
+## 4. Error Cases
+
+### Use Cases for Error Scenarios
+#### **Authentication Errors**
+- **Invalid Credentials**: User enters invalid login credentials.
+- **Account Locked After Repeated Failures**: User is locked out after multiple incorrect login attempts.
+- **Session Timeout**: User session expires due to inactivity.
+- **2FA Code Expired**: Two-Factor Authentication code has expired.
+
+#### **Booking Errors**
+- **Invalid Search Criteria**: Invalid search filters or criteria entered by the user.
+- **Overbooking**: The booking fails due to no available capacity for the selected service.
+- **API Failure for External Services**: The system fails to retrieve data from external services (e.g., flight, hotel).
+- **Incomplete Booking Details**: Missing or incomplete information required for booking.
+
+#### **Payment Errors**
+- **Card Declined**: Payment is declined by the user's bank or card issuer.
+- **Insufficient Funds**: The user does not have enough funds for the transaction.
+- **Payment Gateway Timeout**: The payment gateway times out while processing the transaction.
+- **Duplicate Transaction**: A duplicate payment is detected.
+
+#### **Admin Errors**
+- **Unauthorized Admin Access Attempt**: A malicious user attempts to gain unauthorized admin access.
+- **Failure to Load Reports**: Admin is unable to load reports due to system errors or maintenance.
+- **Error in User Management Actions**: An admin encounters issues while managing users.
+- **Data Sync Issues with Backup Server**: The system encounters problems syncing data with the backup server.
+
+---
+ ![image](https://github.com/user-attachments/assets/34639c59-a5e5-4a95-835a-e09467ac5131)
+```
+plantuml
+@startuml
+left to right direction
+
+actor "Legitimate User" as User
+actor "Malicious User" as Attacker
+actor "Administrator" as Admin
+
+rectangle "Make My Trip Clone  " {
+    rectangle "Core Functionalities" as CF {
+        usecase "Register/Login" as UC1
+        usecase "Search & Book Services" as UC2
+        usecase "Make Secure Payments" as UC3
+        usecase "Access Admin Dashboard" as UC4
+        usecase "Cancel or Modify Booking" as UC5
+        usecase "View Booking History" as UC6
+        usecase "Manage User Profile" as UC7
+    }
+
+    rectangle "Abuse Prevention System" as APS {
+        usecase "Prevent Brute Force Attacks" as APS1
+        usecase "Validate Booking Details" as APS2
+        usecase "Detect Fraudulent Payment Patterns" as APS3
+        usecase "Monitor Admin Login Attempts" as APS4
+        usecase "Blacklist Suspicious IPs" as APS5
+        usecase "Enable Two-Factor Authentication (2FA)" as APS6
+        usecase "Implement Data Input Sanitization" as APS7
+    }
+}
+
+User --> UC1 : "Log In"
+User --> UC2 : "Search and Book Services"
+User --> UC3 : "Make Payments"
+User --> UC5 : "Cancel or Reschedule Booking"
+User --> UC6 : "View Booking History"
+User --> UC7 : "Update Profile"
+
+Attacker --> UC1 : "Brute Force Login"
+Attacker --> UC2 : "Submit Fake Bookings"
+Attacker --> UC3 : "Fraudulent Payment Attempts"
+Attacker --> UC4 : "Unauthorized Admin Access"
+Attacker --> UC5 : "Exploit Cancellation Policies"
+Attacker --> UC7 : "Inject Malicious Data"
+
+APS1 --> UC1 : "Block Repeated Failed Logins"
+APS2 --> UC2 : "Verify Booking Parameters"
+APS3 --> UC3 : "Analyze Payment Patterns"
+APS4 --> UC4 : "Restrict Admin Access by Role/IP"
+APS5 --> UC1 : "Blacklist Malicious IPs"
+APS6 --> UC1 : "Secure Login with 2FA"
+APS7 --> UC7 : "Sanitize Inputs to Prevent Injection"
+
+Admin --> UC4 : "Access Admin Panel"
+Admin --> UC5 : "Oversee Cancellations"
+Admin --> UC7 : "Monitor Suspicious Activities"
+@enduml
+```
