@@ -320,3 +320,43 @@ Admin --> UC7 : "Monitor Suspicious Activities"
 
 @enduml
 ```
+## 6. Non-Functional Requirements
+
+### Performance
+- **Response Time**: The system processes user actions within 2 seconds.  
+- **Scalability**: Can handle up to 10,000 concurrent users.  
+
+### Security
+- **Authentication**: OAuth2 and 2FA implementation.  
+- **Encryption**: Secure all sensitive data.  
+- **Authorization**: Role-based access control.  
+
+### Usability
+- **Intuitive UI**: Easy-to-navigate interface for diverse user groups.  
+- **Accessibility**: WCAG 2.1 compliance for users with disabilities.  
+
+### Reliability
+- **Uptime**: 99.9% availability.  
+- **Data Backup**: Regular data backups to prevent loss.  
+
+### Compliance
+- **GDPR Compliance**: Adhere to global and local data protection regulations.  
+
+---
+
+## 7. Other Requirements
+
+### 7.1 Data Requirements
+- **Schema**: Efficient data storage for user profiles, transactions, and history.  
+- **Backup**: Automated hourly backups.  
+
+### 7.2 Interface Requirements
+- **APIs**: Seamless integration with external travel and payment services.  
+- **Admin Panel**: Secure access for platform management.  
+
+### 7.3 Environmental Requirements
+- **Cloud Hosting**: Deploy on scalable, secure cloud services.  
+- **Mobile Optimization**: Fully functional on both iOS and Android platforms.  
+
+---
+
