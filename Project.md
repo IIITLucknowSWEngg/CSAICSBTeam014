@@ -128,16 +128,41 @@ Robust assistance options:
 
 Here’s a high-level architecture diagram of the platform:  
 
-```mermaid  
-graph TD  
-    A[Web Interface] -->|HTTP/API| B[Backend Server]  
-    B --> C[Authentication Service]  
-    B --> D[Booking Engine]  
-    B --> E[Database]  
-    B --> F[Payment Gateway]  
-    F --> G[Bank API]  
+![image](https://github.com/user-attachments/assets/bcd5c4c4-5628-447c-bcd4-945f547d1aa9)
+```plantuml
+@startuml
+
+' Define main components of the system
+class WebInterface {
+  :React-based UI
+}
+
+class BackendServer {
+  :Node.js + Express
+}
+
+class BookingEngine {
+  :Manages bookings
+}
+
+class Database {
+  :PostgreSQL storage
+}
+
+class PaymentGateway {
+  :Handles payments
+}
+
+' Define relationships
+WebInterface --> BackendServer : Communicates via API
+BackendServer --> BookingEngine : Manages bookings
+BackendServer --> Database : Stores data
+BackendServer --> PaymentGateway : Manages payments
+
+@enduml
 
 ```
+
 ### Key Components  
 
 - **Web Interface**: A React-based UI for desktop and mobile devices.  
