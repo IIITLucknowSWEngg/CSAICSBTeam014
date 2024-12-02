@@ -176,8 +176,7 @@ Admin --> Refund : "Approve Refunds"
 
 ---
  ![image](https://github.com/user-attachments/assets/34639c59-a5e5-4a95-835a-e09467ac5131)
-```
-plantuml
+```PlantUml
 @startuml
 left to right direction
 
