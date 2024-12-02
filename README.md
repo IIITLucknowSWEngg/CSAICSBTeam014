@@ -104,7 +104,7 @@ The **Make My Trip Clone** is a comprehensive travel booking platform designed t
   5. AI-driven personalization and collaborative trip planners.
 
 ### 🔗 Project Approval
-- **Repository**: [GitHub Repository - Code Debuggers](https://github.com/IIITLucknowSWEngg/CSAICSBTeam014)
+- **Link**: [Issue Link](https://github.com/IIITLucknowSWEngg/Assignment/issues/9)
 
 ## 🛠️ Assignment Deliverables
 
