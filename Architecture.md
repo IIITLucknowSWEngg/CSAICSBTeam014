@@ -122,3 +122,88 @@ bookingManagementService --> bookingDB : "Read/Write Booking Data"
 reportGenerationService --> adminActivityLog : "Log Admin Activities"
 @enduml
 ```
+
+### Admin Component Diagram
+![c08e4048-1f7b-4dc7-b37c-1a8caa8cac23](https://github.com/user-attachments/assets/980f3710-06e9-4901-9580-af0d558242b0)
+
+``` plantuml
+@startuml
+title Component Diagram - Admin in MakeMyTrip Clone
+
+package "Admin Section" {
+    [Admin Dashboard] as adminDashboard
+    [Admin API Gateway] as adminGateway
+
+    adminDashboard --> adminGateway : "Admin API Calls"
+}
+
+package "Backend Services" {
+    [User Management Service] as userManagementService
+    [Booking Management Service] as bookingManagementService
+    [Report Generation Service] as reportGenerationService
+}
+
+package "Databases" {
+    [User Database] as userDB
+    [Booking Database] as bookingDB
+    [Admin Activity Log] as adminActivityLog
+}
+
+' Relationships between components
+adminGateway --> userManagementService : "Manage User Data"
+adminGateway --> bookingManagementService : "Manage Bookings"
+adminGateway --> reportGenerationService : "Generate Reports"
+
+userManagementService --> userDB : "Read/Write User Data"
+bookingManagementService --> bookingDB : "Read/Write Booking Data"
+reportGenerationService --> adminActivityLog : "Log Admin Activities"
+@enduml
+```
+
+### Deployment Diagram
+![1c01bd14-4e9b-4a3d-9435-8190db84756f](https://github.com/user-attachments/assets/36f88a86-8c46-4143-8e72-d949b601b0c5)
+
+``` plantuml
+ @startuml
+title Deployment Diagram - MakeMyTrip Clone
+
+node "Web Server" as webServer {
+    artifact "Web Application" as webApp
+    artifact "User API Gateway" as userAPIGateway
+    artifact "Admin API Gateway" as adminAPIGateway
+}
+
+node "Mobile Server" as mobileServer {
+    artifact "Mobile Application" as mobileApp
+    artifact "Mobile API Gateway" as mobileAPIGateway
+}
+
+node "Database Server" as dbServer {
+    artifact "User Database" as userDB
+    artifact "Booking Database" as bookingDB
+    artifact "Payment Database" as paymentDB
+    artifact "Admin Activity Log" as adminLogDB
+}
+
+node "External Services" as externalServices {
+    artifact "Third-Party APIs (Flights, Hotels, Rentals)" as externalAPIs
+    artifact "Payment Gateway" as paymentGateway
+}
+
+' Relationships between nodes and artifacts
+webServer --> dbServer : "Request/Store User Data"
+webServer --> dbServer : "Request/Store Booking Data"
+webServer --> externalServices : "Fetch External Data (Flights, Hotels, Rentals)"
+mobileServer --> dbServer : "Request/Store User Data"
+mobileServer --> dbServer : "Request/Store Booking Data"
+mobileServer --> externalServices : "Fetch External Data (Flights, Hotels, Rentals)"
+
+webServer --> externalServices : "Process Payments"
+mobileServer --> externalServices : "Process Payments"
+
+webServer --> dbServer : "Store Admin Activity Logs"
+mobileServer --> dbServer : "Store Admin Activity Logs"
+@endum
+```
+
+
