@@ -230,3 +230,157 @@
     });
   ```
 ---
+
+## 3. Travel Partner Features
+
+### 3.1 Feature: Travel Partner - Add New Flights  
+**Scenario:** Travel partner adds new flights to the system  
+
+**Given:**  
+- The travel partner is logged into their partner portal.  
+
+**When:**  
+- The travel partner adds new flight details (airline, flight number, schedule, etc.).  
+
+**Then:**  
+- The new flight should be added to the flight listings.  
+- The new flight should be available for booking by users.
+
+- **Test Case**:
+  - **Code:**
+    ```javascript
+    describe('Travel Partner Add New Flights', function() {
+      it('should allow partner to add new flight successfully', function() {
+        partnerDashboard.open();
+        partnerDashboard.addFlight('Airline ABC', 'Flight 101', '2023-12-15', '10:00 AM', '100');
+        expect(partnerDashboard.getFlightList()).to.include('Flight 101');
+      });
+    });
+    ```
+---
+
+### 3.2 Feature: Travel Partner - Update Flight Details  
+**Scenario:** Travel partner updates flight details  
+
+**Given:**  
+- The travel partner is logged into their partner portal.  
+
+**When:**  
+- The travel partner updates flight details (schedule, price, etc.).  
+
+**Then:**  
+- The updated flight details should be reflected in the system.  
+- The updated information should be available for users when searching for flights.
+
+- **Test Case**:
+  - **Code:**
+    ```javascript
+    describe('Travel Partner Update Flight Details', function() {
+      it('should allow partner to update flight details successfully', function() {
+        partnerDashboard.open();
+        partnerDashboard.updateFlight('Flight 101', '2023-12-16', '12:00 PM');
+        expect(partnerDashboard.getFlightDetails('Flight 101')).to.include('2023-12-16');
+      });
+    });
+    ```
+
+---
+
+### 3.3 Feature: Travel Partner - View Bookings  
+**Scenario:** Travel partner views flight bookings  
+
+**Given:**  
+- The travel partner is logged into their partner portal.  
+
+**When:**  
+- The travel partner navigates to the "Bookings" section.  
+
+**Then:**  
+- The travel partner should see a list of all bookings made for their flights, including user details and booking status.
+
+- **Test Case**:
+  - **Code:**
+    ```javascript
+    describe('Travel Partner View Bookings', function() {
+      it('should allow partner to view all bookings made for their flights', function() {
+        partnerDashboard.open();
+        partnerDashboard.viewBookings();
+        const bookings = partnerDashboard.getBookings('Flight 101');
+        expect(bookings).to.be.an('array').that.is.not.empty;
+      });
+    });
+    ```
+
+---
+
+## 4. General Features
+
+### 4.1 Feature: User - View Profile  
+**Scenario:** User views their profile  
+
+**Given:**  
+- The user is logged in.  
+
+**When:**  
+- The user navigates to their profile page.  
+
+**Then:**  
+- The user's profile details (name, email, phone number) should be visible.
+
+- **Test Case**:
+  - **Code:**
+    ```javascript
+    describe('User View Profile', function() {
+      it('should allow user to view profile details', function() {
+        userProfilePage.open();
+        const profile = userProfilePage.getProfileDetails();
+        expect(profile).to.include('John Doe');
+        expect(profile).to.include('john.doe@example.com');
+      });
+    });
+    ```
+
+---
+
+### 4.2 Feature: User - Edit Profile  
+**Scenario:** User edits their profile  
+
+**Given:**  
+- The user is logged in.  
+
+**When:**  
+- The user clicks on "Edit Profile" and updates their details (e.g., email, phone number).  
+
+**Then:**  
+- The updated details should be saved, and a confirmation message should be shown.
+
+- **Test Case**:
+  - **Code:**
+    ```javascript
+    describe('User Edit Profile', function() {
+      it('should allow user to edit profile details', function() {
+        userProfilePage.open();
+        userProfilePage.editProfile('Jane Doe', 'jane.doe@example.com');
+        expect(userProfilePage.getProfileDetails()).to.include('Jane Doe');
+        expect(userProfilePage.getProfileDetails()).to.include('jane.doe@example.com');
+      });
+    });
+    ```
+
+---
+
+## 5. Conclusion
+
+The test plan for the MakeMyTrip platform ensures that all critical functionalities related to user, admin, and travel partner features are thoroughly tested. By covering both positive and negative scenarios, we aim to validate the platform’s stability, usability, and performance. The integration of all features and their seamless execution is essential to provide users with a smooth and efficient experience while interacting with the system.
+
+- **Test Coverage:**  
+  - User Sign Up/Sign In
+  - Flight Search, Booking, and Cancellation
+  - Admin functionalities for managing bookings and flight listings
+  - Travel partner flight management
+  - General profile management features
+  
+The test cases defined in this document serve as a solid foundation for identifying issues early in the development lifecycle, ensuring quality and reliability in the final release.
+
+---
+
