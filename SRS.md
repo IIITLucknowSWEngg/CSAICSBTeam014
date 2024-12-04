@@ -1,4 +1,4 @@
-Specification (SRS) for "Make My Trip" Clone
+# Specification (SRS) for "Make My Trip" Clone
 
 ## 1. Introduction
 
@@ -102,7 +102,66 @@ The system will be a full-stack solution combining a web-based interface and mob
 - **Postcondition**: Successful execution of tasks.  
 - **Flow**:  
   - Admin selects action (view reports, manage users).  
-  - System executes commands and displays results.  
+  - System executes commands and displays results.
+
+#### **Use Case 4: Travel Partner Registration and Onboarding**
+- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
+- **Description**: Travel partners (hotels, airlines, and car rental companies) register on the platform to offer their services.  
+- **Precondition**: Travel partner submits valid business details.  
+- **Postcondition**: Travel partner is onboarded and listed as a service provider.  
+- **Flow**:  
+  - Travel partner submits company details (business info, service catalog, pricing).  
+  - System validates information and sets up the partner profile.  
+  - Travel partner is provided with access to the partner dashboard.  
+- **Alternative Flow**:  
+  - If information is incomplete, the partner is asked to submit the missing details.
+
+#### **Use Case 5: Travel Partner Manage Flights (Add/Update)**
+- **Actors**: Travel Partner (Airline)  
+- **Description**: Travel partners (airlines) can add or update flight details such as availability, pricing, and schedule.  
+- **Precondition**: Travel partner is logged into the partner dashboard.  
+- **Postcondition**: Flight information is updated in real-time on the platform.  
+- **Flow**:  
+  - Travel partner navigates to the flight management section in the dashboard.  
+  - Partner enters new flight details or updates existing flights.  
+  - System updates the flight data and displays the updated information to customers.  
+- **Alternative Flow**:  
+  - If the system encounters an error, the partner is notified to try again later.
+
+#### **Use Case 6: Travel Partner View Bookings**
+- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
+- **Description**: Travel partners can view all the bookings made for their services (flights, hotels, or car rentals).  
+- **Precondition**: Travel partner has access to the partner dashboard.  
+- **Postcondition**: Travel partner can review the list of bookings.  
+- **Flow**:  
+  - Travel partner selects "View Bookings" from the dashboard.  
+  - System displays a list of bookings along with customer details and booking status.  
+- **Alternative Flow**:  
+  - If no bookings exist, the system displays a message indicating no current bookings.
+
+#### **Use Case 7: Travel Partner Approve/Reject Bookings**
+- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
+- **Description**: Travel partners can approve or reject customer bookings based on availability, capacity, or other conditions.  
+- **Precondition**: A new booking request is received.  
+- **Postcondition**: The booking status is updated (approved/rejected).  
+- **Flow**:  
+  - Travel partner selects the booking to review.  
+  - Partner approves or rejects the booking.  
+  - System updates the booking status and notifies the customer.  
+- **Alternative Flow**:  
+  - If the partner cannot approve the booking (e.g., no availability), the system displays the appropriate error message.
+
+#### **Use Case 8: Travel Partner Manage Bookings**
+- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
+- **Description**: Travel partners can manage existing bookings, including modifications or cancellations.  
+- **Precondition**: Travel partner has access to the booking management section in the dashboard.  
+- **Postcondition**: Booking details are updated or canceled.  
+- **Flow**:  
+  - Travel partner selects a booking to modify.  
+  - Partner modifies the booking details (e.g., change dates, room type, flight class).  
+  - System updates the booking and notifies the customer of the change.  
+- **Alternative Flow**:  
+  - If a modification is not possible (e.g., due to constraints), the system informs the partner.
 
 ---
 ### USECASE DIAGRAM
