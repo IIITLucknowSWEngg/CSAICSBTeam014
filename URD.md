@@ -14,6 +14,8 @@ The application will function as a comprehensive travel booking solution, enabli
 - **Vacation Package**: A bundled offer that includes flights, hotels, and optional activities.
 - **Itinerary**: A detailed travel plan, including flights, accommodations, and activities.
 
+---
+
 ## 2. Functional Requirements
 
 ### 2.1 User Management
@@ -96,6 +98,34 @@ The application will function as a comprehensive travel booking solution, enabli
   - Allow users to set preferences for search results, such as preferred airlines, hotel chains, or package options.
   - Provide options for users to save and manage their favorite destinations and travel preferences.
 
+### 2.8 Travel Partner Features
+
+#### 2.8.1 View Bookings
+- **Booking Visibility**:
+  - Travel partners (e.g., airlines, hotels) can view bookings related to their services.
+  - Ability to filter and search bookings by various criteria such as customer name, booking ID, travel dates, and booking status.
+
+#### 2.8.2 Add/Update Flights
+- **Flight Management**:
+  - Travel partners (e.g., airlines) can add new flights to the system, including details like flight number, departure/arrival cities, dates, times, and prices.
+  - Ability to update flight details if there are changes in schedules, availability, or pricing.
+  - Ensure changes are reflected immediately across the platform.
+
+#### 2.8.3 Approve/Reject Bookings
+- **Booking Approval/Rejection**:
+  - Travel partners can approve or reject booking requests based on availability or other criteria.
+  - Notifications will be sent to users regarding the approval or rejection of their bookings.
+  - Rejected bookings will include an explanation for the user.
+
+#### 2.8.4 Manage Bookings
+- **Booking Management**:
+  - Travel partners should be able to manage bookings, including modifying details (e.g., dates, passengers, room types).
+  - Ability to cancel bookings as per the service provider's policy.
+  - Provide users with the option to make changes or cancellations based on the travel partner’s approval.
+  - Track booking status updates (confirmed, pending, cancelled) and provide real-time updates to the user.
+
+---
+
 ## 3. Non-Functional Requirements
 
 ### 3.1 Performance
@@ -131,16 +161,22 @@ The application will function as a comprehensive travel booking solution, enabli
   - Comprehensive documentation for both end-users and developers, including system architecture, API documentation, and user guides.
   - Version control for tracking changes and managing updates.
 
+---
+
 ## 4. Constraints
 - **Third-Party Integration**: The application will rely on third-party APIs for flight and hotel data, which may impact functionality based on their availability and reliability.
 - **Compliance**: Adherence to legal and regulatory requirements relevant to the travel industry and data protection.
 - **Budget and Timeline**: Project development may be constrained by budget and timeline considerations.
+
+---
 
 ## 5. Assumptions
 - **Internet Access**: Users will have reliable internet access to use the application.
 - **Web Browsers**: The application will be compatible with major web browsers (e.g., Chrome, Firefox, Safari, Edge).
 - **Payment Gateways**: Integration with established payment gateways that provide secure transaction processing.
 - **Regulatory Changes**: The application will adapt to changes in travel regulations and data protection laws.
+
+---
 
 ## 6. Glossary
 - **API**: Application Programming Interface, a set of tools and protocols for building software applications.
