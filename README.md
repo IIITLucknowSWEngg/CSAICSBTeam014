@@ -120,17 +120,20 @@ The **Make My Trip Clone** is a comprehensive travel booking platform designed t
 ### 4. Software Requirements Specification (`SRS.md`)
    - Details on functional and non-functional requirements.
 
+### 5. Design Document (`Design.md`)
+   - Provides detailed diagrams, wireframes, and explanations of the system's design, including UI/UX design considerations.
+
+### 6. Architecture Document (`Architecture.md`)
+   - Describes the technical architecture of the system, outlining components, context, and the underlying infrastructure.
+
+### 7. Test Plan (`Test.md`)
+   - Contains the testing strategies, including unit, integration, and acceptance tests, to ensure the quality and reliability of the system.
+
+### 8. Cross Reference Matrix (`Cross Reference Matrix.xlsx`)
+   - A document linking requirements to their corresponding design, implementation, and testing components, ensuring all requirements are addressed across the project.
+
 ## 📊 Team Contributions
 Each team member has made their initial contributions to the repository. You can view individual contributions through the [Contributors](https://github.com/IIITLucknowSWEngg/CSAICSBTeam014/graphs/contributors) page.
-
-## 📑 Files in Repository
-
-- **LICENSE**: MIT License information.
-- **README.md**: Project overview and team introduction.
-- **project.md**: Detailed project objectives.
-- **URD.md**: User needs and functionality.
-- **SRS.md**: Technical requirements.
-- **Stakeholders.md**: Analysis of involved parties.
 
 ## 📝 License
 This project is licensed under the MIT License. See [LICENSE](https://github.com/IIITLucknowSWEngg/CSAICSBTeam014/blob/main/LICENSE) for details.
