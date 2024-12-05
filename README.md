@@ -3,7 +3,7 @@
 # 🏆 Code Debuggers
 
 ![Team Banner](https://img.shields.io/badge/Team-CSAICSBTeam014-blue)
-![Project](https://img.shields.io/badge/Project-Make_My_Trip_Clone-orange)
+![Project](https://img.shields.io/badge/Project-Make_My_Trip_Competitor-orange)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![Status](https://img.shields.io/badge/Status-In_Development-yellow)]()
 
@@ -74,10 +74,10 @@
 ## 📋 Project Overview
 
 ### Project Title
-**Make My Trip Clone**
+**Make My Trip Competitor**
 
 ### Description
-The **Make My Trip Clone** is a comprehensive travel booking platform designed to replicate the functionalities of popular travel booking sites while enhancing user experience. The project provides seamless booking options for flights, hotels, holiday packages, buses, trains, and car rentals, along with managing itineraries and accessing customer support.
+The **Make My Trip Competitor** is a comprehensive travel booking platform designed to replicate the functionalities of popular travel booking sites while enhancing user experience. The project provides seamless booking options for flights, hotels, holiday packages, buses, trains, and car rentals, along with managing itineraries and accessing customer support.
 
 ### Project Scope
 - **Included Features:**
