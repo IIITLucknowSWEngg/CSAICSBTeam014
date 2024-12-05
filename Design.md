@@ -47,6 +47,7 @@ The **Make My Trip Clone** adopts a distributed system architecture to handle a 
 
 ### Diagram 1: Overall System Architecture
 ![image](https://github.com/user-attachments/assets/df4924eb-1579-4010-9145-8cb9c5ef0c0b)
+#### Code
 ```plantuml
 @startuml
 actor User
@@ -112,7 +113,7 @@ The frontend is built as a **Single Page Application (SPA)** using modern web de
 
 ### Diagram 2: Frontend Architecture
 ![image](https://github.com/user-attachments/assets/73cc2738-5d45-4ac6-8f1d-0d76feccab80)
-
+#### Code
 ```plantuml
 @startuml
 actor User as U
@@ -176,6 +177,7 @@ The backend is designed as a **microservices-based system** using **Node.js** an
 
 ### Diagram 3: Backend Architecture
 ![image](https://github.com/user-attachments/assets/d2003f31-262a-4ef0-af2e-b21d1c2b4df9)
+#### Code
 ```plantuml
 @startuml
 actor Frontend
@@ -209,6 +211,7 @@ The database is designed to be highly normalized and optimized for relational da
 
 ### Diagram 4: Database Schema
 ![image](https://github.com/user-attachments/assets/297c62de-a43e-433f-b2aa-ebaf563c51f6)
+#### Code
 ```plantuml
 @startuml
 entity User {
