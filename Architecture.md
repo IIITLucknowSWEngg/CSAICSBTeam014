@@ -1,4 +1,3 @@
-
 ### System Context Diagram
 ![PHOTO-2024-12-03-01-39-22](https://github.com/user-attachments/assets/a1fb8c70-9f0d-4f2b-a3b5-936fab38f7a3)
 ```PlantUml
@@ -162,4 +161,49 @@ reportGenerationService --> adminActivityLog : "Log Admin Activities"
 ```
 
 
+### Deployment Diagram
+![1c01bd14-4e9b-4a3d-9435-8190db84756f](https://github.com/user-attachments/assets/36f88a86-8c46-4143-8e72-d949b601b0c5)
+
+``` plantuml
+ @startuml
+title Deployment Diagram - MakeMyTrip Clone
+
+node "Web Server" as webServer {
+    artifact "Web Application" as webApp
+    artifact "User API Gateway" as userAPIGateway
+    artifact "Admin API Gateway" as adminAPIGateway
+}
+
+node "Mobile Server" as mobileServer {
+    artifact "Mobile Application" as mobileApp
+    artifact "Mobile API Gateway" as mobileAPIGateway
+}
+
+node "Database Server" as dbServer {
+    artifact "User Database" as userDB
+    artifact "Booking Database" as bookingDB
+    artifact "Payment Database" as paymentDB
+    artifact "Admin Activity Log" as adminLogDB
+}
+
+node "External Services" as externalServices {
+    artifact "Third-Party APIs (Flights, Hotels, Rentals)" as externalAPIs
+    artifact "Payment Gateway" as paymentGateway
+}
+
+' Relationships between nodes and artifacts
+webServer --> dbServer : "Request/Store User Data"
+webServer --> dbServer : "Request/Store Booking Data"
+webServer --> externalServices : "Fetch External Data (Flights, Hotels, Rentals)"
+mobileServer --> dbServer : "Request/Store User Data"
+mobileServer --> dbServer : "Request/Store Booking Data"
+mobileServer --> externalServices : "Fetch External Data (Flights, Hotels, Rentals)"
+
+webServer --> externalServices : "Process Payments"
+mobileServer --> externalServices : "Process Payments"
+
+webServer --> dbServer : "Store Admin Activity Logs"
+mobileServer --> dbServer : "Store Admin Activity Logs"
+@endum
+```
 
