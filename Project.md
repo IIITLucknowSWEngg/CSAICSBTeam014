@@ -129,6 +129,8 @@ Robust assistance options:
 Here’s a high-level architecture diagram of the platform:  
 
 ![image](https://github.com/user-attachments/assets/bcd5c4c4-5628-447c-bcd4-945f547d1aa9)
+
+#### Code
 ```plantuml
 @startuml
 
