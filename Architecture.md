@@ -1,4 +1,4 @@
-### System Context Diagram
+### 1. System Context Diagram
 ![PHOTO-2024-12-03-01-39-22](https://github.com/user-attachments/assets/a1fb8c70-9f0d-4f2b-a3b5-936fab38f7a3)
 #### Code
 ```PlantUml
@@ -44,7 +44,8 @@ Attacker --> UC5 : "Unauthorized Admin Access"
 
 @enduml
 ```
-### Container Diagram
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 2. Container Diagram
 ![PHOTO-2024-12-03-01-57-05](https://github.com/user-attachments/assets/a52056ec-b1fe-43fb-845c-d229bd011f34)
 #### Code
 ```PlantUml
@@ -89,7 +90,8 @@ paymentService --> paymentDB : "Read/Write Payment Data"
 paymentService --> paymentGateway : "Process Payments"
 @enduml
 ```
-### User component diagram
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 3. User component diagram
 ![PHOTO-2024-12-03-02-02-37](https://github.com/user-attachments/assets/d2e42993-ca4a-47cc-a2b5-072b384e58c8)
 #### Code
 ```PlantUml
@@ -125,8 +127,9 @@ bookingManagementService --> bookingDB : "Read/Write Booking Data"
 reportGenerationService --> adminActivityLog : "Log Admin Activities"
 @enduml
 ```
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Admin Component Diagram
+### 4. Admin Component Diagram
 ![c08e4048-1f7b-4dc7-b37c-1a8caa8cac23](https://github.com/user-attachments/assets/980f3710-06e9-4901-9580-af0d558242b0)
 
 #### Code
@@ -163,9 +166,10 @@ bookingManagementService --> bookingDB : "Read/Write Booking Data"
 reportGenerationService --> adminActivityLog : "Log Admin Activities"
 @enduml
 ```
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-### Deployment Diagram
+### 5. Deployment Diagram
 ![1c01bd14-4e9b-4a3d-9435-8190db84756f](https://github.com/user-attachments/assets/36f88a86-8c46-4143-8e72-d949b601b0c5)
 
 #### Code
