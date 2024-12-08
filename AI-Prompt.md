@@ -1,4 +1,4 @@
-# AI Documentation Prompts for the Travel Booking Platform
+# AI Documentation Prompts for the Make My Trip Platform
 
 This document outlines AI-generated prompts intended to assist in creating detailed and professional documentation for the travel booking platform project.
 
