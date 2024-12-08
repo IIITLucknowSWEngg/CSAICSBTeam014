@@ -8,7 +8,6 @@ This document identifies the primary stakeholders involved in the MakeMyTrip.com
 | **Key Stakeholders**       | **Role**               | **Responsibilities**                                                              | **Impact**                                                                          |
 |-----------------------------|------------------------|----------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
 | **Developers**              | Creators              | Building and maintaining the system, fixing bugs, and implementing features      | Ensure platform functionality, scalability, and user satisfaction                  |
-
 | **Marketing Team**          | Promoters             | Advertising the platform to attract users and service providers                  | Increases platform visibility and user base                                        |
 | **Product Manager**         | Strategic Planner     | Defining product goals, prioritizing features, and ensuring timely delivery      | Guides the project roadmap and feature alignment                                   |
 | **UI/UX Designers**         | User Experience Team  | Designing intuitive interfaces for users and ensuring accessibility              | Enhance user satisfaction and engagement                                           |
