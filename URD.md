@@ -182,4 +182,4 @@ The application will function as a comprehensive travel booking solution, enabli
 - **API**: Application Programming Interface, a set of tools and protocols for building software applications.
 - **GDPR**: General Data Protection Regulation, a regulation in EU law on data protection and privacy.
 - **PCI DSS**: Payment Card Industry Data Security Standard, a set of security standards designed to protect payment card information.
-- **MFA**: Multi-Factor Authentication, a security system that requires more than one form of verification to
+- **MFA**: Multi-Factor Authentication, a security system that requires more than one form of verification to access an account or perform a transaction, enhancing security by combining multiple authentication methods such as passwords, biometric data, or physical tokens.
