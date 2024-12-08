@@ -369,7 +369,78 @@
 
 ---
 
-## 5. Conclusion
+## 5. Non-Functional Requirements (NFRs)
+
+To ensure the MakeMyTrip platform delivers a high-quality experience, we have outlined test scenarios for the following non-functional requirements: Performance, Usability, Security, Reliability, and Maintainability.
+
+---
+
+### 5.1 Performance
+
+This section evaluates the platform's efficiency and responsiveness under various conditions.
+
+| Test Scenario                             | Description                                                                 | Success Criteria                                                                 | Testing Tools/Methodology                            |
+|-------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|-----------------------------------------------------|
+| Response time under normal and peak loads | Measure how quickly the platform responds during login, search, and booking.| Response time should be less than 2 seconds for 95% of interactions.           | Use Apache JMeter, Locust for load testing.         |
+| Scalability with increased user base      | Simulate up to 10,000 concurrent users to assess the system's scalability.  | The system should handle the load without crashing or significant performance degradation. | Perform stress testing using cloud-based load simulators. |
+| Flight search results latency             | Evaluate the time taken to fetch flight search results.                     | Search results should appear within 3 seconds for 95% of queries.              | Implement API response monitoring tools like Postman. |
+| Database query performance                | Measure database query execution time during peak operations.               | Queries should execute within 500ms for 90% of transactions.                   | Use tools like New Relic or Dynatrace.              |
+
+---
+
+### 5.2 Usability
+
+This section focuses on user-friendliness and ease of interaction.
+
+| Test Scenario                              | Description                                                                  | Success Criteria                                                            | Testing Tools/Methodology                   |
+|--------------------------------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------|----------------------------------------------|
+| Ease of navigation                         | Assess the intuitiveness of the user interface (UI).                         | Users should be able to navigate to their desired feature in ≤3 clicks.   | Perform heuristic evaluations and A/B testing. |
+| Accessibility for differently-abled users  | Ensure compatibility with screen readers and other assistive technologies.   | Compliance with WCAG 2.1 AA standards.                                   | Use WAVE and Axe Accessibility Checker.        |
+| Consistent UI and UX                       | Validate that the platform maintains a uniform design and experience across pages. | Users should find the interface consistent and free from visual anomalies. | Conduct user surveys and usability testing.     |
+| Mobile responsiveness                      | Test usability on devices of varying screen sizes (mobile, tablet, desktop).  | UI should adapt seamlessly to all screen sizes without breaking.          | Use BrowserStack or LambdaTest.               |
+
+---
+
+### 5.3 Security
+
+This section ensures that the platform protects user data and mitigates potential risks.
+
+| Test Scenario                 | Description                                                                 | Success Criteria                                                                    | Testing Tools/Methodology          |
+|-------------------------------|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------|------------------------------------|
+| Data encryption               | Ensure sensitive data (e.g., passwords, payment info) is encrypted at rest and in transit. | All sensitive data should be encrypted using AES-256 or TLS 1.2/1.3.             | Use Wireshark or Burp Suite.       |
+| Authentication and authorization | Validate secure login and role-based access control (RBAC).             | Unauthorized users should be unable to access restricted areas.                  | Perform penetration testing with OWASP ZAP. |
+| Vulnerability assessment      | Identify and mitigate potential vulnerabilities in the codebase.          | No high-severity vulnerabilities should remain unresolved.                       | Use tools like Nessus or Qualys.   |
+| Security against injections   | Test for SQL injection, XSS, and CSRF vulnerabilities.                    | The system should reject malicious payloads and maintain integrity.              | Conduct automated testing with Acunetix. |
+
+---
+
+### 5.4 Reliability
+
+This section assesses the system's dependability under normal and stress conditions.
+
+| Test Scenario                     | Description                                                         | Success Criteria                                                              | Testing Tools/Methodology        |
+|-----------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------|----------------------------------|
+| Uptime and availability           | Test the platform's uptime under continuous operations.            | Ensure 99.9% uptime as per SLA.                                              | Use Pingdom or UptimeRobot.      |
+| Failure recovery time             | Measure the time to recover from a system failure.                 | Recovery time should not exceed 5 minutes for critical services.             | Perform failover testing.        |
+| Data consistency after failures   | Validate the consistency of data after unexpected crashes.         | Data should remain accurate and complete post-recovery.                      | Conduct crash recovery testing.  |
+| Error handling                    | Ensure graceful handling of unexpected errors.                     | Users should see informative error messages instead of system crashes.       | Perform fault injection testing. |
+
+---
+
+### 5.5 Maintainability
+
+This section evaluates the platform's ease of maintenance and adaptability to changes.
+
+| Test Scenario                       | Description                                                         | Success Criteria                                                                    | Testing Tools/Methodology       |
+|-------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------|----------------------------------|
+| Code readability and documentation  | Check if the codebase is clean and well-documented.                | Developers should understand and modify code with minimal ramp-up time.           | Perform code reviews and audits. |
+| Modular architecture                | Validate that the system follows modular design principles.        | New features should integrate easily without affecting existing modules.          | Analyze system design diagrams.  |
+| Dependency updates                  | Test the ability to update external dependencies (e.g., libraries, APIs). | Updates should be applied without breaking functionality.                         | Conduct compatibility testing.   |
+| Automated testing coverage          | Ensure robust automated test coverage for critical modules.        | ≥90% of critical functionality should have automated test coverage.               | Use Jest, Mocha, or Selenium.    |
+
+---
+
+## 6. Conclusion
 
 The test plan for the MakeMyTrip platform ensures that all critical functionalities related to user, admin, and travel partner features are thoroughly tested. By covering both positive and negative scenarios, we aim to validate the platform’s stability, usability, and performance. The integration of all features and their seamless execution is essential to provide users with a smooth and efficient experience while interacting with the system.
 
