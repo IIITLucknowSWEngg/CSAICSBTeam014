@@ -261,6 +261,7 @@ BackendServer --> PaymentGateway : Manages payments
 1. **AI Recommendations**: Personalized trip suggestions based on preferences.  
 2. **Advanced Filters**: Enhanced sorting by ratings, deals, and amenities.  
 3. **Global Language and Currency Support**: Expand reach to international users.  
-4. **Offline Booking Mode**: Enable pre-booking with offline sync.  
+4. **Offline Booking Mode**: Enable pre-booking with offline sync.
+5. **Blockchain Transactions**: Decentralised the Platform with smart contracts.
 
 ---
