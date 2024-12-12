@@ -289,3 +289,8 @@ Booking ||--o{ Hotel : "books"
 - **Monitoring and Alerts**: Set up tools like Prometheus and Grafana for real-time monitoring.
 
 ---
+
+## 8. Engineering Blog References
+
+- **Make My Trip Engineering Blog** : [Link][https://tech.makemytrip.com/]
+- **Agoda Tech Blog** : [Link][https://careersatagoda.com/tech-blog/]
