@@ -13,7 +13,7 @@
 6. [Database Design](#database-design)
    - [Diagram 4: Database Schema](#diagram-4-database-schema)
 7. [Design Considerations](#design-considerations)
-8. [PlantUML Code for Diagrams](#plantuml-code-for-diagrams)
+8. [Engineering Blog References](#engineering_blog_references)
 
 ---
 
@@ -292,5 +292,5 @@ Booking ||--o{ Hotel : "books"
 
 ## 8. Engineering Blog References
 
-- **Make My Trip Engineering Blog** : [Link][https://tech.makemytrip.com/]
-- **Agoda Tech Blog** : [Link][https://careersatagoda.com/tech-blog/]
+- **Make My Trip Engineering Blog** : [Link](https://tech.makemytrip.com/)
+- **Agoda Tech Blog** : [Link](https://careersatagoda.com/tech-blog/)
