@@ -71,99 +71,299 @@ The system will be a full-stack solution combining a web-based interface and mob
 
 ## 3. Functional Requirements
 
-### Use Cases
-#### **Use Case 1: User Registration/Login**
-- **Actors**: User  
-- **Description**: Allows users to create accounts or log in using email or social accounts.  
-- **Precondition**: User provides valid credentials.  
-- **Postcondition**: User gains access to the platform.  
-- **Flow**:  
+### *Use Cases*
+
+#### *Use Case 1: User Registration/Login*
+- *Actors*: User  
+- *Goal*: Allows users to create accounts or log in using email or social accounts.  
+- *Precondition*: User provides valid credentials.  
+- *Postcondition*: User gains access to the platform.  
+- *Flow*:  
   - User enters credentials.  
   - System validates credentials.  
   - User is redirected to the dashboard.  
-- **Alternative Flow**:  
+- *Alternative Flow*:  
   - Invalid credentials trigger an error message.  
   - Account lock after five failed attempts.  
 
-#### **Use Case 2: Search for Travel Services**
-- **Actors**: User  
-- **Description**: Enables users to search for flights, hotels, or car rentals.  
-- **Precondition**: Search criteria entered.  
-- **Postcondition**: List of options displayed.  
-- **Flow**:  
-  - User selects filters (dates, locations, price).  
-  - System queries external APIs.  
-  - Results are displayed with sorting options.  
 
-#### **Use Case 3: Admin Management**
-- **Actors**: Admin  
-- **Description**: Admins manage users, bookings, and content.  
-- **Precondition**: Valid admin login.  
-- **Postcondition**: Successful execution of tasks.  
-- **Flow**:  
-  - Admin selects action (view reports, manage users).  
-  - System executes commands and displays results.
+#### *Use Case 2: Account Verification*
+- *Actors*: User  
+- *Goal*: Allows users to verify their account via email or SMS to confirm their identity.  
+- *Precondition*: User has successfully registered.  
+- *Postcondition*: User's account is verified.  
+- *Flow*:  
+  - User receives a verification email or SMS.  
+  - User clicks on the verification link or enters the SMS code.  
+  - System verifies the code and activates the account.  
+- *Alternative Flow*:  
+  - Invalid or expired verification code results in an error message.  
 
-#### **Use Case 4: Travel Partner Registration and Onboarding**
-- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
-- **Description**: Travel partners (hotels, airlines, and car rental companies) register on the platform to offer their services.  
-- **Precondition**: Travel partner submits valid business details.  
-- **Postcondition**: Travel partner is onboarded and listed as a service provider.  
-- **Flow**:  
-  - Travel partner submits company details (business info, service catalog, pricing).  
-  - System validates information and sets up the partner profile.  
-  - Travel partner is provided with access to the partner dashboard.  
-- **Alternative Flow**:  
-  - If information is incomplete, the partner is asked to submit the missing details.
 
-#### **Use Case 5: Travel Partner Manage Flights (Add/Update)**
-- **Actors**: Travel Partner (Airline)  
-- **Description**: Travel partners (airlines) can add or update flight details such as availability, pricing, and schedule.  
-- **Precondition**: Travel partner is logged into the partner dashboard.  
-- **Postcondition**: Flight information is updated in real-time on the platform.  
-- **Flow**:  
-  - Travel partner navigates to the flight management section in the dashboard.  
-  - Partner enters new flight details or updates existing flights.  
-  - System updates the flight data and displays the updated information to customers.  
-- **Alternative Flow**:  
-  - If the system encounters an error, the partner is notified to try again later.
+#### *Use Case 3: User Login/Logout*
+- *Actors*: User  
+- *Goal*: Allows users to securely log in and log out of the platform.  
+- *Precondition*: User has an active account.  
+- *Postcondition*: User is logged in or logged out successfully.  
+- *Flow*:  
+  - User enters credentials and submits.  
+  - System validates the credentials and logs the user in.  
+  - On logout, the system logs the user out and redirects to the login page.  
+- *Alternative Flow*:  
+  - Invalid credentials trigger an error message.  
 
-#### **Use Case 6: Travel Partner View Bookings**
-- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
-- **Description**: Travel partners can view all the bookings made for their services (flights, hotels, or car rentals).  
-- **Precondition**: Travel partner has access to the partner dashboard.  
-- **Postcondition**: Travel partner can review the list of bookings.  
-- **Flow**:  
-  - Travel partner selects "View Bookings" from the dashboard.  
-  - System displays a list of bookings along with customer details and booking status.  
-- **Alternative Flow**:  
-  - If no bookings exist, the system displays a message indicating no current bookings.
 
-#### **Use Case 7: Travel Partner Approve/Reject Bookings**
-- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
-- **Description**: Travel partners can approve or reject customer bookings based on availability, capacity, or other conditions.  
-- **Precondition**: A new booking request is received.  
-- **Postcondition**: The booking status is updated (approved/rejected).  
-- **Flow**:  
-  - Travel partner selects the booking to review.  
+#### *Use Case 4: Profile Management*
+- *Actors*: User  
+- *Goal*: Allows users to view and update their personal information, including contact details and payment methods.  
+- *Precondition*: User is logged in.  
+- *Postcondition*: User's profile is updated with the new information.  
+- *Flow*:  
+  - User navigates to the profile section.  
+  - User updates personal details, including contact information and payment methods.  
+  - System saves the updated information.  
+- *Alternative Flow*:  
+  - Invalid input triggers an error message.  
+
+
+#### *Use Case 5: Password Management*
+- *Actors*: User  
+- *Goal*: Allows users to reset their password and recover their account.  
+- *Precondition*: User has an active account.  
+- *Postcondition*: User's password is successfully reset.  
+- *Flow*:  
+  - User clicks on 'Forgot Password.'  
+  - User enters email or mobile number for verification.  
+  - User receives a reset code via email or SMS.  
+  - User enters the code to reset the password.  
+- *Alternative Flow*:  
+  - Invalid or expired reset code triggers an error message.  
+
+
+#### *Use Case 6: Flight Search*
+- *Actors*: Flight Booking User  
+- *Goal*: Allows users to search for flights based on various criteria such as departure and arrival cities, dates, number of passengers, and class of service.  
+- *Precondition*: User is logged in.  
+- *Postcondition*: User views a list of flights based on search criteria.  
+- *Flow*:  
+  - User enters search criteria for flight search.  
+  - System fetches available flight results.  
+  - User views the results and selects a preferred flight.  
+- *Alternative Flow*:  
+  - No available flights for the given search criteria triggers a 'No results' message.  
+
+
+#### *Use Case 7: Hotel Search*
+- *Actors*: Hotel Booking User  
+- *Goal*: Allows users to search for hotels based on location, check-in/check-out dates, and guest details.  
+- *Precondition*: User is logged in.  
+- *Postcondition*: User views a list of hotels based on search criteria.  
+- *Flow*:  
+  - User enters hotel search criteria.  
+  - System fetches available hotels based on the criteria.  
+  - User views the results and selects a hotel.  
+- *Alternative Flow*:  
+  - No available hotels for the given search criteria triggers a 'No results' message.  
+
+
+#### *Use Case 8: Vacation Package Search*
+- *Actors*: User  
+- *Goal*: Allows users to search for vacation packages including flights, hotels, and activities.  
+- *Precondition*: User is logged in.  
+- *Postcondition*: User views a list of vacation packages based on search criteria.  
+- *Flow*:  
+  - User enters vacation package search criteria.  
+  - System fetches available vacation packages.  
+  - User views the results and selects a package.  
+- *Alternative Flow*:  
+  - No available vacation packages for the given search criteria triggers a 'No results' message.  
+
+
+#### *Use Case 9: Flight Booking*
+- *Actors*: Flight Booking User  
+- *Goal*: Allows users to book a flight by selecting a preferred flight, entering passenger details, and completing the payment.  
+- *Precondition*: User has selected a flight.  
+- *Postcondition*: User receives a booking confirmation email/SMS with booking details.  
+- *Flow*:  
+  - User selects a flight and enters passenger details.  
+  - User selects seat preferences.  
+  - User proceeds to payment and completes the transaction.  
+  - System confirms the booking and sends a confirmation email/SMS.  
+- *Alternative Flow*:  
+  - Invalid payment details trigger an error message.  
+
+
+#### *Use Case 10: Hotel Booking*
+- *Actors*: Hotel Booking User  
+- *Goal*: Allows users to book a hotel room by selecting a preferred room, entering guest details, and completing the payment.  
+- *Precondition*: User has selected a hotel room.  
+- *Postcondition*: User receives a booking confirmation email/SMS with booking details.  
+- *Flow*:  
+  - User selects a room type and enters guest details.  
+  - User proceeds to payment and completes the transaction.  
+  - System confirms the booking and sends a confirmation email/SMS.  
+- *Alternative Flow*:  
+  - Invalid payment details trigger an error message.  
+
+
+#### *Use Case 11: Vacation Package Booking*
+- *Actors*: User  
+- *Goal*: Allows users to book a vacation package by selecting a preferred package, entering details, and completing the payment.  
+- *Precondition*: User has selected a vacation package.  
+- *Postcondition*: User receives a booking confirmation email/SMS with booking details.  
+- *Flow*:  
+  - User selects a vacation package and customizes options.  
+  - User enters booking details.  
+  - User proceeds to payment and completes the transaction.  
+  - System confirms the booking and sends a confirmation email/SMS.  
+- *Alternative Flow*:  
+  - Invalid payment details trigger an error message.  
+
+
+#### *Use Case 12: Booking Confirmation*
+- *Actors*: User  
+- *Goal*: Allows users to receive booking confirmations via email/SMS after completing a booking.  
+- *Precondition*: User has completed a booking.  
+- *Postcondition*: User receives booking confirmation details.  
+- *Flow*:  
+  - User completes booking.  
+  - System sends a booking confirmation email/SMS with booking details.  
+  - User is provided with a downloadable PDF of the booking confirmation.  
+- *Alternative Flow*:  
+  - System failure triggers a booking confirmation error message.  
+
+
+#### *Use Case 13: View Bookings*
+- *Actors*: User  
+- *Goal*: Allows users to view details of their current and past bookings.  
+- *Precondition*: User is logged in.  
+- *Postcondition*: User views booking details.  
+- *Flow*:  
+  - User navigates to the booking history section.  
+  - User selects a booking to view details.  
+  - System displays booking information.  
+- *Alternative Flow*:  
+  - No bookings found triggers a 'No bookings' message.  
+
+
+#### *Use Case 14: Cancel/Modify Bookings*
+- *Actors*: User  
+- *Goal*: Allows users to cancel or modify bookings according to the provider’s policy.  
+- *Precondition*: User has an active booking.  
+- *Postcondition*: User’s booking status is updated after cancellation or modification.  
+- *Flow*:  
+  - User selects a booking to modify or cancel.  
+  - User modifies the booking details or requests cancellation.  
+  - System updates the booking status accordingly.  
+- *Alternative Flow*:  
+  - Cancellation/modification not allowed triggers an error message.  
+
+
+#### *Use Case 15: Itinerary Management*
+- *Actors*: User  
+- *Goal*: Allows users to view and manage their travel itineraries.  
+- *Precondition*: User has a confirmed booking.  
+- *Postcondition*: User’s itinerary is updated.  
+- *Flow*:  
+  - User navigates to the itinerary section.  
+  - User adds notes, tracks changes, and views details.  
+  - System updates the itinerary in real-time.  
+- *Alternative Flow*:  
+  - No itinerary found triggers an error message.  
+
+
+#### *Use Case 16: Payment Processing*
+- *Actors*: User  
+- *Goal*: Allows users to make secure payments for bookings.  
+- *Precondition*: User has selected a service (flight, hotel, package) and is ready to pay.  
+- *Postcondition*: User’s payment is processed securely.  
+- *Flow*:  
+  - User selects a payment method.  
+  - User enters payment details.  
+  - System processes the payment securely.  
+  - User receives payment confirmation.  
+- *Alternative Flow*:  
+  - Payment failure triggers an error message.  
+
+
+#### *Use Case 17: Support Requests*
+- *Actors*: User  
+- *Goal*: Allows users to access support channels and create tickets for issues or queries.  
+- *Precondition*: User is logged in.  
+- *Postcondition*: User’s support request is created or resolved.  
+- *Flow*:  
+  - User accesses the support section.  
+  - User creates a support ticket.  
+  - System tracks and updates ticket status.  
+- *Alternative Flow*:  
+  - No tickets found triggers a 'No tickets' message.  
+
+
+#### *Use Case 18: Notifications*
+- *Actors*: User  
+- *Goal*: Allows users to receive email/SMS and in-app notifications for booking updates and special offers.  
+- *Precondition*: User has active bookings.  
+- *Postcondition*: User receives relevant notifications.  
+- *Flow*:  
+  - User receives notifications via email/SMS and in-app.  
+  - User views the notification details.  
+- *Alternative Flow*:  
+  - No new notifications triggers a 'No new notifications' message.  
+
+
+#### *Use Case 19: View Bookings (Partner)*
+- *Actors*: Travel Booking Partner  
+- *Goal*: Allows travel partners (e.g., airlines, hotels) to view bookings related to their services.  
+- *Precondition*: Partner is logged in and has access to relevant bookings.  
+- *Postcondition*: Partner views relevant booking details.  
+- *Flow*:  
+  - Partner accesses the booking section.  
+  - Partner applies filters such as customer name, booking ID, and travel dates.  
+  - System displays filtered booking results.  
+- *Alternative Flow*:  
+  - No bookings found triggers a 'No bookings' message.  
+
+
+#### *Use Case 20: Add/Update Flights (Partner)*
+- *Actors*: Travel Booking Partner  
+- *Goal*: Allows travel partners to add or update flight details.  
+- *Precondition*: Partner is logged in and has permissions to manage flights.  
+- *Postcondition*: Flight details are successfully added or updated.  
+- *Flow*:  
+  - Partner adds or selects an existing flight.  
+  - Partner enters or updates flight details.  
+  - System reflects the changes immediately.  
+- *Alternative Flow*:  
+  - Invalid flight details trigger an error message.  
+
+
+#### *Use Case 21: Approve/Reject Bookings (Partner)*
+- *Actors*: Travel Booking Partner  
+- *Goal*: Allows travel partners to approve or reject bookings based on availability.  
+- *Precondition*: Partner has received a booking request.  
+- *Postcondition*: Booking status is updated.  
+- *Flow*:  
+  - Partner reviews booking details.  
   - Partner approves or rejects the booking.  
-  - System updates the booking status and notifies the customer.  
-- **Alternative Flow**:  
-  - If the partner cannot approve the booking (e.g., no availability), the system displays the appropriate error message.
+  - System updates the booking status and notifies the user.  
+- *Alternative Flow*:  
+  - Booking rejection triggers a 'Booking Rejected' message.  
 
-#### **Use Case 8: Travel Partner Manage Bookings**
-- **Actors**: Travel Partner (Hotel, Airline, Car Rental Company)  
-- **Description**: Travel partners can manage existing bookings, including modifications or cancellations.  
-- **Precondition**: Travel partner has access to the booking management section in the dashboard.  
-- **Postcondition**: Booking details are updated or canceled.  
-- **Flow**:  
-  - Travel partner selects a booking to modify.  
-  - Partner modifies the booking details (e.g., change dates, room type, flight class).  
-  - System updates the booking and notifies the customer of the change.  
-- **Alternative Flow**:  
-  - If a modification is not possible (e.g., due to constraints), the system informs the partner.
 
----
+#### *Use Case 22: Manage Bookings (Partner)*
+- *Actors*: Travel Booking Partner  
+- *Goal*: Allows travel partners to manage bookings, including modifications and cancellations.  
+- *Precondition*: Partner has an active booking.  
+- *Postcondition*: Partner updates or cancels bookings.  
+- *Flow*:  
+  - Partner selects a booking to manage.  
+  - Partner modifies or cancels the booking.  
+  - System reflects the changes in real-time.  
+- *Alternative Flow*:  
+  - Cancellation/modification not allowed triggers an error message.
+
+--- 
+
 ### USECASE DIAGRAM
 ![PHOTO-2024-12-02-22-55-00](https://github.com/user-attachments/assets/69774f79-7da2-43b4-97d7-e6bd70edaa19)
 
@@ -379,7 +579,44 @@ Admin --> UC7 : "Monitor Suspicious Activities"
 
 @enduml
 ```
-## 6. Non-Functional Requirements
+
+## 6. Swimlane Diagram
+
+![NP7DRi8m3CVlVOeSjnFtSM53cZPfJ0W4TojrYqSRTuupXDI77qqADDogt__3Thhm2gAXROf-vr7wmfYNuSDii2Ql0ahiPbzSaviFsgkr79oQFGfLPACyluMYRt1pq4ZNmXKrQ5RWeCOMtOZ1-nDB-SYteUjOz3ByDw1N7-4twstKXHJz6_EHN3q9nxNV6weFQhO8OWyn-S6](https://github.com/user-attachments/assets/ad0ac1ac-9e3e-46a7-8482-3dd2c63f08c6)
+
+```plantuml
+@startuml
+|User|
+  :User Registration/Login;
+  :Account Verification;
+  :User Login/Logout;
+  :Profile Management;
+  :Password Management;
+  :Support Requests;
+  :Notifications;
+
+|Booking Management|
+  :Flight Search;
+  :Hotel Search;
+  :Vacation Package Search;
+  :Flight Booking;
+  :Hotel Booking;
+  :Vacation Package Booking;
+  :Booking Confirmation;
+  :View Bookings;
+  :Cancel/Modify Bookings;
+  :Itinerary Management;
+
+|Partner Management|
+  :View Bookings (Partner);
+  :Add or Update Flights;
+  :Approve or Reject Bookings;
+  :Manage Bookings;
+@enduml
+```
+
+
+## 7. Non-Functional Requirements
 
 ### Performance
 - **Response Time**: The system processes user actions within 2 seconds.  
@@ -403,17 +640,17 @@ Admin --> UC7 : "Monitor Suspicious Activities"
 
 ---
 
-## 7. Other Requirements
+## 8. Other Requirements
 
-### 7.1 Data Requirements
+### 8.1 Data Requirements
 - **Schema**: Efficient data storage for user profiles, transactions, and history.  
 - **Backup**: Automated hourly backups.  
 
-### 7.2 Interface Requirements
+### 8.2 Interface Requirements
 - **APIs**: Seamless integration with external travel and payment services.  
 - **Admin Panel**: Secure access for platform management.  
 
-### 7.3 Environmental Requirements
+### 8.3 Environmental Requirements
 - **Cloud Hosting**: Deploy on scalable, secure cloud services.  
 - **Mobile Optimization**: Fully functional on both iOS and Android platforms.  
 
