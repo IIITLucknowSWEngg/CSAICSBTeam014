@@ -46,7 +46,7 @@ The **Make My Trip Clone** adopts a distributed system architecture to handle a 
 3. **Database**: Stores relational data for users, bookings, and listings.
 
 ### Diagram 1: Overall System Architecture
-![image](https://github.com/user-attachments/assets/df4924eb-1579-4010-9145-8cb9c5ef0c0b)
+![image](https://github.com/user-attachments/assets/b3deb9fc-de7e-4cb8-9209-97d32fe1b7b9)
 #### Code
 ```plantuml
 @startuml
@@ -64,13 +64,14 @@ rectangle "Backend" {
     [Business Logic]
     [Booking Service]
     [User Management Service]
-    [Database Handler]
+    [Notification Service]
 }
 
 rectangle "External Services" {
     [Payment Gateway]
     [Flight APIs]
     [Hotel APIs]
+    [Email/SMS Notification Service]
 }
 
 User --> [Search Flights]
@@ -84,10 +85,12 @@ Admin --> [Admin Dashboard]
 [API Gateway] --> [Business Logic]
 [Business Logic] --> [Booking Service]
 [Business Logic] --> [User Management Service]
+[Booking Service] --> [Notification Service]
+[Notification Service] --> [Email/SMS Notification Service]
+
 [Booking Service] --> Database: Query/Update Booking
 [User Management Service] --> Database: Query/Update User Data
-[Database Handler] --> Database: Query
-[Database Handler] --> [Payment Gateway]: Process Payment
+
 [Business Logic] --> [Flight APIs]: Fetch Flight Data
 [Business Logic] --> [Hotel APIs]: Fetch Hotel Data
 
@@ -112,7 +115,7 @@ The frontend is built as a **Single Page Application (SPA)** using modern web de
 3. Rendering real-time notifications from the backend.
 
 ### Diagram 2: Frontend Architecture
-![image](https://github.com/user-attachments/assets/73cc2738-5d45-4ac6-8f1d-0d76feccab80)
+![image](https://github.com/user-attachments/assets/64694a65-4e74-42da-bce1-4dd13450d7c8)
 #### Code
 ```plantuml
 @startuml
@@ -121,23 +124,20 @@ actor Admin as A
 
 package "React Frontend" {
     rectangle "User Interaction Layer" {
-        [Home Page] 
+        [Home Page]
         [Search Results Page]
         [Booking Details Page]
     }
+    
     rectangle "State Management" {
-        [Global State] 
+        [Global State]
     }
+    
     rectangle "Components" {
         [Header]
         [Footer]
         [Search Bar]
         [Booking Form]
-    }
-    rectangle "Admin Interaction Layer" {
-        [Admin Dashboard]
-        [Booking Management]
-        [User Management]
     }
 }
 
@@ -145,16 +145,6 @@ U --> [Home Page]: Navigate
 [Home Page] --> [Search Results Page]: Submit Search
 [Search Results Page] --> [Global State]: Update Search Results
 [Booking Details Page] --> [Global State]: Fetch Booking Data
-[Global State] --> [Header]: Update Navbar
-[Global State] --> [Footer]: Update Footer Info
-[Search Bar] ..> [Global State]: Update Query State
-[Booking Form] --> [Global State]: Dispatch Booking Actions
-
-A --> [Admin Dashboard]: View System Metrics
-A --> [Booking Management]: Modify/Cancel Bookings
-A --> [User Management]: Manage Users
-
-[Global State] --> [Admin Dashboard]: Sync Admin Data
 
 @enduml
 
@@ -176,7 +166,7 @@ The backend is designed as a **microservices-based system** using **Node.js** an
 - **Secure Authentication**: User sessions managed via JWT tokens.
 
 ### Diagram 3: Backend Architecture
-![image](https://github.com/user-attachments/assets/d2003f31-262a-4ef0-af2e-b21d1c2b4df9)
+![image](https://github.com/user-attachments/assets/d1d00c2c-c3c4-4924-bdbc-b272b4f4740a)
 #### Code
 ```plantuml
 @startuml
@@ -194,6 +184,7 @@ Frontend --> [Authentication Service]: Login/Register
 Frontend --> [Booking Service]: Book Flights/Hotels
 Frontend --> [Payment Service]: Process Payment
 Admin --> [Admin Service]: Manage System
+
 @enduml
 ```
 
@@ -210,7 +201,7 @@ The database is designed to be highly normalized and optimized for relational da
 - **Bookings**: Links users with their reservations (flights, hotels, or cabs).
 
 ### Diagram 4: Database Schema
-![image](https://github.com/user-attachments/assets/297c62de-a43e-433f-b2aa-ebaf563c51f6)
+![image](https://github.com/user-attachments/assets/47af2c1b-89e0-4112-bc77-1accb18be0c7)
 #### Code
 ```plantuml
 @startuml
@@ -238,31 +229,10 @@ entity Admin {
     name : VARCHAR
     email : VARCHAR
     role : VARCHAR
-    last_login : TIMESTAMP
-}
-
-entity Flight {
-    * flight_id : INT [PK]
-    ---
-    flight_number : VARCHAR
-    departure : VARCHAR
-    arrival : VARCHAR
-    available_seats : INT
-}
-
-entity Hotel {
-    * hotel_id : INT [PK]
-    ---
-    hotel_name : VARCHAR
-    location : VARCHAR
-    rooms_available : INT
 }
 
 User ||--o{ Booking : "makes"
 Admin ||--o{ Booking : "manages"
-Admin ||--o{ User : "manages"
-Booking ||--o{ Flight : "books"
-Booking ||--o{ Hotel : "books"
 @enduml
 
 ```
@@ -290,7 +260,38 @@ Booking ||--o{ Hotel : "books"
 
 ---
 
-## 8. Engineering Blog References
+## 8. Swimlane Diagram
+![image](https://github.com/user-attachments/assets/bea59940-eadb-476f-9cf7-7b888cf4a567)
+#### Code
+```plantuml
+@startuml
+|User|
+  :User Registration/Login;
+  :Account Verification;
+  :User Login/Logout;
+  :Profile Management;
+  :Password Management;
+  :Support Requests;
+  :Notifications;
+|Booking Management|
+  :Flight Search;
+  :Hotel Search;
+  :Vacation Package Search;
+  :Flight Booking;
+  :Hotel Booking;
+  :Vacation Package Booking;
+  :Booking Confirmation;
+  :View Bookings;
+  :Cancel/Modify Bookings;
+  :Itinerary Management;
+@enduml
+
+```
+
+---
+
+
+## 9. Engineering Blog References
 
 - **Make My Trip Engineering Blog** : [Link](https://tech.makemytrip.com/)
 - **Agoda Tech Blog** : [Link](https://careersatagoda.com/tech-blog/)
