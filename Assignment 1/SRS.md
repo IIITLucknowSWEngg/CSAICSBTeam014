@@ -579,7 +579,44 @@ Admin --> UC7 : "Monitor Suspicious Activities"
 
 @enduml
 ```
-## 6. Non-Functional Requirements
+
+## 6. Swimlane Diagram
+
+![NP7DRi8m3CVlVOeSjnFtSM53cZPfJ0W4TojrYqSRTuupXDI77qqADDogt__3Thhm2gAXROf-vr7wmfYNuSDii2Ql0ahiPbzSaviFsgkr79oQFGfLPACyluMYRt1pq4ZNmXKrQ5RWeCOMtOZ1-nDB-SYteUjOz3ByDw1N7-4twstKXHJz6_EHN3q9nxNV6weFQhO8OWyn-S6](https://github.com/user-attachments/assets/ad0ac1ac-9e3e-46a7-8482-3dd2c63f08c6)
+
+```plantuml
+@startuml
+|User|
+  :User Registration/Login;
+  :Account Verification;
+  :User Login/Logout;
+  :Profile Management;
+  :Password Management;
+  :Support Requests;
+  :Notifications;
+
+|Booking Management|
+  :Flight Search;
+  :Hotel Search;
+  :Vacation Package Search;
+  :Flight Booking;
+  :Hotel Booking;
+  :Vacation Package Booking;
+  :Booking Confirmation;
+  :View Bookings;
+  :Cancel/Modify Bookings;
+  :Itinerary Management;
+
+|Partner Management|
+  :View Bookings (Partner);
+  :Add or Update Flights;
+  :Approve or Reject Bookings;
+  :Manage Bookings;
+@enduml
+```
+
+
+## 7. Non-Functional Requirements
 
 ### Performance
 - **Response Time**: The system processes user actions within 2 seconds.  
@@ -603,17 +640,17 @@ Admin --> UC7 : "Monitor Suspicious Activities"
 
 ---
 
-## 7. Other Requirements
+## 8. Other Requirements
 
-### 7.1 Data Requirements
+### 8.1 Data Requirements
 - **Schema**: Efficient data storage for user profiles, transactions, and history.  
 - **Backup**: Automated hourly backups.  
 
-### 7.2 Interface Requirements
+### 8.2 Interface Requirements
 - **APIs**: Seamless integration with external travel and payment services.  
 - **Admin Panel**: Secure access for platform management.  
 
-### 7.3 Environmental Requirements
+### 8.3 Environmental Requirements
 - **Cloud Hosting**: Deploy on scalable, secure cloud services.  
 - **Mobile Optimization**: Fully functional on both iOS and Android platforms.  
 
