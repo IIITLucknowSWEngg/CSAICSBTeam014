@@ -1,218 +1,300 @@
-### 1. System Context Diagram
-![PHOTO-2024-12-03-01-39-22](https://github.com/user-attachments/assets/a1fb8c70-9f0d-4f2b-a3b5-936fab38f7a3)
+# MakeMyTrip Competitor Booking System Architecture
+
+## 1. Context Diagram
+A context diagram for the MakeMyTrip Competitor Booking System illustrates its interactions with external entities. The main system is the "MakeMyTrip Competitor Booking System," surrounded by entities such as "Customer," "Payment Gateway," "Hotel," and "Inventory System." The arrows represent information flow between the main system and external entities. The diagram provides a high-level view of the system's scope and relationships, facilitating understanding among stakeholders.
+
+![image](https://github.com/user-attachments/assets/0f88feae-c443-4c20-b532-c4613f4f5431)
+
 #### Code
-```PlantUml
+```
 @startuml
-!define RECTANGLE class
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 
-' External entities
-actor "User" as User
-actor "Admin" as Admin
-actor "Malicious User" as Attacker
-entity "Third-Party APIs (Flight, Hotel, Car Rental)" as ExternalServices
-entity "Payment Gateway" as PaymentGateway
-entity "Cloud Storage" as CloudStorage
+LAYOUT_TOP_DOWN()
+title System Context Diagram - MakeMyTrip Competitor Booking System
 
-' System boundary (Make My Trip Clone)
-rectangle "Make My Trip Clone System" {
-    usecase "User Registration/Login" as UC1
-    usecase "Search & Book Services" as UC2
-    usecase "Manage User Profile" as UC3
-    usecase "Payments Integration" as UC4
-    usecase "Admin Dashboard" as UC5
-    usecase "Booking History" as UC6
+Person(customer, "Customer", "Searches, books, and manages travel bookings")
+Person(hotelAdmin, "Hotel Admin", "Manages hotel details, room availability, and pricing")
+
+System(competitorBookingSystem, "MakeMyTrip Competitor Booking System", "Online platform for booking hotels, flights, and vacation packages")
+
+System_Ext(paymentGateway, "Payment Gateway", "Processes customer payments securely")
+System_Ext(hotel, "Hotel", "Provides accommodations")
+System_Ext(inventorySystem, "Inventory System", "Tracks room availability and pricing")
+System_Ext(notificationService, "Notification Service", "Sends booking confirmations and alerts")
+System_Ext(analytics, "Analytics", "Tracks user behavior and platform performance")
+System_Ext(reviewSystem, "Review System", "Manages customer feedback and ratings")
+System_Ext(flightService, "Flight Service", "Provides flight details and booking options")
+
+Rel(customer, competitorBookingSystem, "Searches, books, and manages travel bookings", "HTTPS")
+Rel(hotelAdmin, competitorBookingSystem, "Manages hotel details and inventory", "HTTPS")
+Rel(competitorBookingSystem, paymentGateway, "Processes payments", "API")
+Rel(competitorBookingSystem, hotel, "Sends booking details", "API")
+Rel(competitorBookingSystem, inventorySystem, "Syncs room availability and pricing", "API")
+Rel(competitorBookingSystem, notificationService, "Sends booking confirmations", "SMTP")
+Rel(competitorBookingSystem, analytics, "Tracks platform usage", "API")
+Rel(competitorBookingSystem, reviewSystem, "Manages customer feedback", "API")
+Rel(competitorBookingSystem, flightService, "Handles flight bookings", "API")
+@enduml
+```
+---
+## 2. Container Diagram
+The container diagram for the MakeMyTrip Competitor Booking System shows the software containers that make up the system. The main containers are the "Web Frontend," "Booking Service," "Payment Service," "Flight Service," and "Database." The "Web Browser" interacts with the "Web Frontend" for user interaction. The "Booking Service" and "Payment Service" handle booking and payment processes. The "Flight Service" handles flight bookings, and the "Database" stores system data. The diagram illustrates the system's software architecture and component relationships.
+
+![image](https://github.com/user-attachments/assets/16bfc3c7-0c57-4698-aa51-1f8b0f66098c)
+
+#### Code
+```
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+skinparam {
+    RectangleBackgroundColor #C08080
+    RectangleBorderColor #A06060
+    RectangleFontColor #FFFFFF
+    ArrowColor #A06060
+    ArrowThickness 2
+    ArrowStyle dashed
 }
+
+LAYOUT_TOP_DOWN()
+title Container Diagram - MakeMyTrip Competitor Booking System
+
+Person(customer, "Customer", "Searches, books, and manages travel bookings")
+Person(hotelAdmin, "Hotel Admin", "Manages hotel details, room availability, and pricing")
+
+System_Boundary(competitorBookingSystem, "MakeMyTrip Competitor Booking System") {
+    Container(webFrontend, "Web Frontend", "React", "Allows customers to search and book hotels, flights, and packages")
+    Container(bookingService, "Booking Service", "Node.js", "Handles hotel and flight booking operations")
+    Container(paymentService, "Payment Service", "Java", "Processes payments securely")
+    Container(notificationService, "Notification Service", "Python", "Sends booking confirmations and notifications")
+    Container(flightService, "Flight Service", "Ruby", "Handles flight bookings and management")
+    
+    ContainerDb(mainDatabase, "Database", "PostgreSQL", "Stores customer, booking, hotel, and flight data")
+}
+
+System_Ext(paymentGateway, "Payment Gateway", "Processes customer payments securely")
+System_Ext(hotel, "Hotel", "Provides accommodations")
+System_Ext(inventorySystem, "Inventory System", "Tracks room availability and pricing")
+System_Ext(flightServiceAPI, "Flight Service API", "Provides flight booking options")
+
+Rel(customer, webFrontend, "Interacts with", "HTTPS")
+Rel(hotelAdmin, competitorBookingSystem, "Manages hotel details and inventory", "HTTPS")
+Rel(webFrontend, bookingService, "Handles booking requests", "HTTPS")
+Rel(webFrontend, paymentService, "Processes payments", "HTTPS")
+Rel(bookingService, mainDatabase, "Stores booking data", "JDBC")
+Rel(paymentService, paymentGateway, "Processes payments", "API")
+Rel(notificationService, mainDatabase, "Fetches booking data", "JDBC")
+Rel(notificationService, customer, "Sends notifications", "SMTP")
+Rel(bookingService, inventorySystem, "Updates room availability", "API")
+Rel(bookingService, flightServiceAPI, "Fetches flight details", "API")
+@enduml
+```
+---
+## 3. Component Diagram
+i) **User Features**
+![image](https://github.com/user-attachments/assets/ce21c849-c286-4b12-a23a-c5f73a067d82)
+
+#### Code
+```@startuml
+' Component Diagram for User Features of MakeMyTrip Competitor
+
+skinparam componentStyle rectangle
+
+' External User
+actor "User" as User
+
+' Components
+component "UI Layer" as UI
+component "Search & Filter Service" as SFS
+component "Booking Service" as BS
+component "Payment Gateway" as PG
+component "Recommendation Service" as RS
+component "Notification Service" as NS
+component "Reviews & Ratings Service" as RRS
+
+' Databases
+database "Room Listings DB" as RDB
+database "Booking DB" as BDB
+database "User Reviews DB" as CRDB
+database "Flight Listings DB" as FDB
 
 ' Relationships
-User --> UC1 : "Register/Login"
-User --> UC2 : "Search & Book Services"
-User --> UC3 : "Update Profile"
-User --> UC4 : "Make Payments"
-User --> UC6 : "View Booking History"
+user --> UI : "Interacts"
+UI --> SFS : "Searches and filters rooms"
+UI --> BS : "Makes bookings"
+UI --> PG : "Processes payments"
+UI --> RS : "Receives recommendations"
+UI --> NS : "Receives notifications"
+UI --> RRS : "Leaves reviews"
 
-Admin --> UC5 : "Access Admin Dashboard"
-Admin --> UC3 : "Manage User Profiles"
-
-ExternalServices --> UC2 : "Provide Flight, Hotel, and Car Rental Data"
-PaymentGateway --> UC4 : "Process Payments"
-CloudStorage --> UC6 : "Store Booking Data"
-
-Attacker --> UC1 : "Attempt Brute Force Login"
-Attacker --> UC2 : "Submit Fake Bookings"
-Attacker --> UC4 : "Attempt Fraudulent Payments"
-Attacker --> UC5 : "Unauthorized Admin Access"
+' Database Connections
+SFS --> RDB : "Fetches room details"
+SFS --> FDB : "Fetches flight details"
+BS --> BDB : "Stores booking details"
+PG --> BDB : "Processes payments"
+RRS --> CRDB : "Stores reviews and ratings"
 
 @enduml
 ```
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### 2. Container Diagram
-![PHOTO-2024-12-03-01-57-05](https://github.com/user-attachments/assets/a52056ec-b1fe-43fb-845c-d229bd011f34)
+---
+ii) **Admin Features**
+![image](https://github.com/user-attachments/assets/852f8fce-96db-4963-84fc-e81b09c421a5)
 #### Code
-```PlantUml
+```
 @startuml
-!define RECTANGLE rectangle
+' Component Diagram for Admin Features of MakeMyTrip Competitor
 
-title Container Diagram - MakeMyTrip Clone
+skinparam componentStyle rectangle
 
-' Add primary containers
-' User section
-RECTANGLE "Mobile App" as mobileApp <<Mobile Application>>
-RECTANGLE "Web App" as webApp <<Web Application>>
-RECTANGLE "User API Gateway" as userGateway <<API Gateway>>
+' External Actor
+actor "Admin" as admin
 
-' Backend services
-RECTANGLE "Search Service" as searchService <<Microservice>>
-RECTANGLE "Booking Service" as bookingService <<Microservice>>
-RECTANGLE "Payment Service" as paymentService <<Microservice>>
-RECTANGLE "User Service" as userService <<Microservice>>
+' Components
+component "Admin Dashboard" as AD
+component "Room Management Service" as RMS
+component "User Management Service" as UMS
+component "Booking Management Service" as BMS
+component "Analytics Service" as AS
+component "Notification Service" as NS
 
-' Database containers
-RECTANGLE "User Database" as userDB <<Database>>
-RECTANGLE "Booking Database" as bookingDB <<Database>>
-RECTANGLE "Payment Database" as paymentDB <<Database>>
+' Databases
+database "Room Listings DB" as RDB
+database "User DB" as UDB
+database "Booking DB" as BDB
+database "Flight Listings DB" as FDB
 
-' External systems
-RECTANGLE "External Payment Gateway" as paymentGateway <<External System>>
-RECTANGLE "Third-Party Travel APIs (Flights, Hotels, Car Rentals)" as travelAPI <<External System>>
+' Relationships
+admin --> AD : "Accesses"
+AD --> RMS : "Manages room details"
+AD --> UMS : "Manages users"
+AD --> BMS : "Manages bookings"
+AD --> AS : "Views analytics"
+AD --> NS : "Sends notifications"
 
-' Relationships between containers
-mobileApp --> userGateway : "API Calls"
-webApp --> userGateway : "API Calls"
-userGateway --> searchService : "Search Flights, Hotels, and Car Rentals"
-userGateway --> bookingService : "Manage Bookings"
-userGateway --> paymentService : "Process Payments"
+' Database Connections
+RMS --> RDB : "Adds/Edits/Deletes room listings"
+UMS --> UDB : "Accesses user details"
+BMS --> BDB : "Updates booking statuses"
+AS --> RDB : "Fetches room data"
+AS --> BDB : "Fetches booking data"
+AS --> UDB : "Fetches user activity"
 
-searchService --> travelAPI : "Fetch Travel Data"
-bookingService --> bookingDB : "Read/Write Booking Data"
-userService --> userDB : "Read/Write User Data"
-paymentService --> paymentDB : "Read/Write Payment Data"
-
-paymentService --> paymentGateway : "Process Payments"
 @enduml
 ```
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### 3.1 User component diagram
-![PHOTO-2024-12-03-02-02-37](https://github.com/user-attachments/assets/d2e42993-ca4a-47cc-a2b5-072b384e58c8)
+---
+## 4. Deployment Diagram
+
+A deployment diagram for the MakeMyTrip Competitor Booking System illustrates the physical architecture of the system, showing how different components are deployed across nodes. The diagram includes key tiers such as the "Client Tier" with web and mobile apps, the "API Tier" with services like API Gateway, Booking Service, and Flight Service, and the "Data Tier" with databases for user, booking, and flight data. Additionally, the diagram includes Non-Functional Requirements (NFRs) like scalability, security, and performance monitoring.
+
+![image](https://github.com/user-attachments/assets/c492ffd8-f485-49f9-95ac-b7954ed4117f)
+
 #### Code
-```PlantUml
+```
 @startuml
-title Component Diagram - Admin in MakeMyTrip Clone
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
 
-package "Admin Section" {
-    [Admin Dashboard] as adminDashboard
-    [Admin API Gateway] as adminGateway
+LAYOUT_WITH_LEGEND()
+title Deployment Diagram - MakeMyTrip Competitor Booking System
 
-    adminDashboard --> adminGateway : "Admin API Calls"
+Deployment_Node(client, "Client Tier", "User Devices") {
+    Deployment_Node(browser, "Web Browser") {
+        Container(web, "Web App", "React", "Allows users to search and book hotels, flights, and packages")
+    }
+    Deployment_Node(mobile, "Mobile Device") {
+        Container(app, "Mobile App", "React Native", "Provides hotel search and booking on the go")
+    }
 }
 
-package "Backend Services" {
-    [User Management Service] as userManagementService
-    [Booking Management Service] as bookingManagementService
-    [Report Generation Service] as reportGenerationService
+Deployment_Node(api, "API Tier", "AWS ECS/Kubernetes") {
+    Deployment_Node(api_cluster, "API Cluster", "Load Balanced") {
+        Container(api_gateway, "API Gateway", "Express.js", "Handles incoming requests and routing")
+        Container(booking_service, "Booking Service", "Node.js", "Manages hotel bookings and availability")
+        Container(auth_service, "Authentication Service", "OAuth2/OpenID", "Handles user authentication and sessions")
+        Container(flight_service, "Flight Service", "Ruby", "Handles flight bookings and management")
+    }
+    Deployment_Node(notification, "Notification Service") {
+        Container(notification_service, "Notification Service", "Python", "Sends booking confirmations and alerts")
+    }
 }
 
-package "Databases" {
-    [User Database] as userDB
-    [Booking Database] as bookingDB
-    [Admin Activity Log] as adminActivityLog
+Deployment_Node(data, "Data Tier", "AWS RDS/DynamoDB") {
+    Deployment_Node(databases, "Database Cluster") {
+        ContainerDb(user_db, "User Database", "Amazon RDS", "Stores user information")
+        ContainerDb(booking_db, "Booking Database", "Amazon RDS", "Stores booking details and hotel availability")
+        ContainerDb(flight_db, "Flight Database", "Amazon RDS", "Stores flight booking and availability data")
+    }
 }
 
-' Relationships between components
-adminGateway --> userManagementService : "Manage User Data"
-adminGateway --> bookingManagementService : "Manage Bookings"
-adminGateway --> reportGenerationService : "Generate Reports"
+Deployment_Node(storage, "Storage Tier", "Global") {
+    Deployment_Node(object_storage, "Object Storage") {
+        Container(hotel_images, "Hotel Images", "Amazon S3", "Stores hotel images and related static assets")
+        Container(flight_images, "Flight Images", "Amazon S3", "Stores flight images and related static assets")
+    }
+}
 
-userManagementService --> userDB : "Read/Write User Data"
-bookingManagementService --> bookingDB : "Read/Write Booking Data"
-reportGenerationService --> adminActivityLog : "Log Admin Activities"
+Deployment_Node(monitoring, "Monitoring and Security") {
+    Container(logging, "Logging", "AWS CloudWatch", "Captures application logs for debugging and monitoring")
+    Container(metrics, "Metrics", "Prometheus/Grafana", "Monitors system performance and usage")
+    Container(security, "Web Application Firewall (WAF)", "AWS WAF", "Protects against malicious requests")
+}
+
+Rel(web, api_gateway, "Sends requests", "HTTPS")
+Rel(app, api_gateway, "Sends requests", "HTTPS")
+Rel(api_gateway, auth_service, "Authenticates users", "OAuth2")
+Rel(api_gateway, booking_service, "Manages bookings", "REST")
+Rel(booking_service, booking_db, "Reads/Writes booking data", "SQL")
+Rel(booking_service, user_db, "Reads/Writes user data", "SQL")
+Rel(flight_service, flight_db, "Reads/Writes flight data", "SQL")
+Rel(notification_service, booking_db, "Fetches booking data", "SQL")
+Rel(notification_service, user_db, "Fetches user data", "SQL")
+Rel(notification_service, client, "Sends notifications", "SMTP")
+Rel(booking_service, flight_service, "Fetches flight details", "API")
+Rel(hotel_images, web, "Delivers hotel images", "HTTPS")
+Rel(flight_images, app, "Delivers flight images", "HTTPS")
+
+' Non-Functional Requirements (NFRs)
+note right of api_gateway
+  - Scalability: Auto-scaling based on load
+  - High availability: Deployed across multiple availability zones
+  - Load balancing: Ensures even distribution of traffic
+  - Caching: Use of CloudFront and API Gateway caching for faster responses
+end note
+
+note right of api_cluster
+  - Performance Monitoring: Prometheus and Grafana
+  - Reliability: 99.9% uptime
+  - Security: End-to-end encryption (TLS), Data encrypted at rest
+  - Auto-scaling: Based on traffic demand
+end note
+
+note right of databases
+  - Data Redundancy: Multi-Region Replication
+  - Backups: Automated backups every 24 hours
+  - Security: Role-based access control, Encryption at rest
+  - High availability: Failover support
+end note
+
+note right of storage
+  - Data Redundancy: S3 Cross-Region Replication
+  - Security: AES-256 Encryption for stored files
+  - Performance: Content Delivery Network (CDN) for fast access to assets
+end note
+
+note right of monitoring
+  - Centralized Logging: CloudWatch for unified logs
+  - Security Monitoring: AWS WAF for threat detection
+  - Incident Response: Automated alerts for security breaches and performance degradation
+end note
 @enduml
 ```
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+### Key Non-Functional Requirements (NFRs) in the Deployment Diagram:
 
-### 3.2 Admin Component Diagram
-![c08e4048-1f7b-4dc7-b37c-1a8caa8cac23](https://github.com/user-attachments/assets/980f3710-06e9-4901-9580-af0d558242b0)
-
-#### Code
-``` plantuml
-@startuml
-title Component Diagram - Admin in MakeMyTrip Clone
-
-package "Admin Section" {
-    [Admin Dashboard] as adminDashboard
-    [Admin API Gateway] as adminGateway
-
-    adminDashboard --> adminGateway : "Admin API Calls"
-}
-
-package "Backend Services" {
-    [User Management Service] as userManagementService
-    [Booking Management Service] as bookingManagementService
-    [Report Generation Service] as reportGenerationService
-}
-
-package "Databases" {
-    [User Database] as userDB
-    [Booking Database] as bookingDB
-    [Admin Activity Log] as adminActivityLog
-}
-
-' Relationships between components
-adminGateway --> userManagementService : "Manage User Data"
-adminGateway --> bookingManagementService : "Manage Bookings"
-adminGateway --> reportGenerationService : "Generate Reports"
-
-userManagementService --> userDB : "Read/Write User Data"
-bookingManagementService --> bookingDB : "Read/Write Booking Data"
-reportGenerationService --> adminActivityLog : "Log Admin Activities"
-@enduml
-```
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-### 4. Deployment Diagram
-![1c01bd14-4e9b-4a3d-9435-8190db84756f](https://github.com/user-attachments/assets/36f88a86-8c46-4143-8e72-d949b601b0c5)
-
-#### Code
-``` plantuml
- @startuml
-title Deployment Diagram - MakeMyTrip Clone
-
-node "Web Server" as webServer {
-    artifact "Web Application" as webApp
-    artifact "User API Gateway" as userAPIGateway
-    artifact "Admin API Gateway" as adminAPIGateway
-}
-
-node "Mobile Server" as mobileServer {
-    artifact "Mobile Application" as mobileApp
-    artifact "Mobile API Gateway" as mobileAPIGateway
-}
-
-node "Database Server" as dbServer {
-    artifact "User Database" as userDB
-    artifact "Booking Database" as bookingDB
-    artifact "Payment Database" as paymentDB
-    artifact "Admin Activity Log" as adminLogDB
-}
-
-node "External Services" as externalServices {
-    artifact "Third-Party APIs (Flights, Hotels, Rentals)" as externalAPIs
-    artifact "Payment Gateway" as paymentGateway
-}
-
-' Relationships between nodes and artifacts
-webServer --> dbServer : "Request/Store User Data"
-webServer --> dbServer : "Request/Store Booking Data"
-webServer --> externalServices : "Fetch External Data (Flights, Hotels, Rentals)"
-mobileServer --> dbServer : "Request/Store User Data"
-mobileServer --> dbServer : "Request/Store Booking Data"
-mobileServer --> externalServices : "Fetch External Data (Flights, Hotels, Rentals)"
-
-webServer --> externalServices : "Process Payments"
-mobileServer --> externalServices : "Process Payments"
-
-webServer --> dbServer : "Store Admin Activity Logs"
-mobileServer --> dbServer : "Store Admin Activity Logs"
-@endum
-```
-
+- **Scalability**: Horizontal scaling enabled by auto-scaling groups for API Gateway and services like Booking Service and Flight Service. Load balancing ensures high performance under varying traffic loads.
+- **Availability**: Multi-availability zone deployments across services like API Gateway and databases to ensure high availability and fault tolerance.
+- **Caching**: Caching implemented at the API Gateway level with AWS CloudFront for better response times and reduced load on back-end services.
+- **Security**: Secure communications using TLS, with encryption of sensitive data at rest in databases and object storage. The Web Application Firewall (WAF) prevents malicious requests.
+- **Performance Monitoring**: The system uses Prometheus and Grafana for continuous monitoring of system performance. AWS CloudWatch captures logs for real-time diagnostics.
+- **Reliability**: The system guarantees 99.9% uptime with automated backups, failover mechanisms, and high availability configurations for databases and storage.
+- **Incident Response**: Automated alerts are set up for any security incidents or system performance degradation, enabling proactive handling of potential issues.
