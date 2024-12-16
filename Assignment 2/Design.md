@@ -13,7 +13,8 @@
 6. [Database Design](#database-design)
    - [Diagram 4: Database Schema](#diagram-4-database-schema)
 7. [Design Considerations](#design-considerations)
-8. [Engineering Blog References](#engineering_blog_references)
+8. [Swim Lane Diagram](#swimlane-diagram)
+9. [Engineering Blog References](#engineering_blog_references)
 
 ---
 
