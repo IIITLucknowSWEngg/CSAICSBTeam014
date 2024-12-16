@@ -1,371 +1,385 @@
-# Test Plan for MakeMyTrip Platform
+# Test Plan for MakeMyTrip  Competitor Platform
 
-## 1. User Features
+## 1. General User Features
 
-### 1.1 Feature: User - Sign Up  
-*Scenario:* User creates a new account  
+### 1.1 Feature: User - Registration
+#### Scenario: User creates a new account
+**Given:**
+The user is on the MakeMyTrip sign-up page.
 
-*Given:*  
-- The user is on the MakeMyTrip sign-up page.  
+**When:**
+The user enters valid details (name, email, password, phone number).
+The user clicks the "Sign Up" button.
 
-*When:*  
-- The user enters valid details (name, email, password, phone number).  
-- The user clicks the "Sign Up" button.  
-
-*Then:*  
-- The user should be successfully signed up.  
-- The user should receive a confirmation email.  
+**Then:**
+- The user should be successfully signed up.
+- The user should receive a confirmation email.
 - The user should be redirected to the dashboard.
 
-- *Test Case*:
-  - *Code:* 
-     ```javascript
-     describe('User Sign Up', function() {
-        it('should allow user to sign up successfully', function() {
-          signUpPage.open();
-          signUpPage.enterDetails('John Doe', 'john.doe@example.com', 'password123', '9876543210');
-          signUpPage.submitSignUp();
-          expect(signUpPage.getConfirmationMessage()).to.include('Account created successfully');
-        });
-      });
-     ```
-
----
-
-### 1.2 Feature: User - Sign In  
-*Scenario:* User logs into their account  
-
-*Given:*  
-- The user is on the MakeMyTrip login page.  
-
-*When:*  
-- The user enters valid credentials (email and password).  
-- The user clicks the "Sign In" button.  
-
-*Then:*  
-- The user should be signed in successfully.  
-- The user should be redirected to the homepage.
-
-- *Test Case*:
-  - *Code:*
-    ``` javascript
-    describe('User Sign In', function() {
-      it('should allow user to sign in successfully with correct credentials', function() {
-        loginPage.open();
-        loginPage.enterCredentials('john.doe@example.com', 'password123');
-        loginPage.submitLogin();
-        expect(homePage.getWelcomeMessage()).to.include('Welcome, John Doe');
-      });
-    });
-    ```
----
-
-### 1.3 Feature: User - Search for Flights  
-*Scenario:* User searches for flights based on specific criteria  
-
-*Given:*  
-- The user is logged in and on the flight search page.  
-
-*When:*  
-- The user enters the source and destination city, travel dates, and number of passengers.  
-- The user clicks the "Search Flights" button.  
-
-*Then:*  
-- The system should return a list of available flights that match the search criteria.  
-- The results should be displayed with flight details (airline, price, departure time).
-
-- *Test Case*:
-  - *Code:*
-    ``` javascript
-    describe('User Flight Search', function() {
-      it('should show available flights based on search criteria', function() {
-        searchPage.open();
-        searchPage.enterSearchCriteria('New York', 'Los Angeles', '2023-12-15', 2);
-        searchPage.submitSearch();
-        expect(searchPage.getSearchResults()).to.be.an('array').that.is.not.empty;
-      });
-    });
-    ```
----
-
-### 1.4 Feature: User - Book Flight  
-*Scenario:* User successfully books a flight  
-
-*Given:*  
-- The user is logged in and has selected a flight.  
-
-*When:*  
-- The user enters passenger details and payment information.  
-- The user clicks the "Book Flight" button.  
-
-*Then:*  
-- The flight booking should be confirmed.  
-- The user should receive a booking confirmation email.  
-- The booking details should be available in the user's dashboard.
-
-- *Test Case*:
-  - *Code:*
-    ``` javascript
-     describe('User Flight Booking', function() {
-      it('should allow user to book a flight successfully', function() {
-        flightDetailsPage.open();
-        flightDetailsPage.selectFlight('Flight 101');
-        bookingPage.enterPassengerDetails('John Doe', 'john.doe@example.com');
-        bookingPage.submitBooking();
-        expect(bookingPage.getConfirmationMessage()).to.include('Booking successful');
-      });
-    });
-    ```
----
-
-### 1.5 Feature: User - Cancel Flight Booking  
-*Scenario:* User cancels an existing flight booking  
-
-*Given:*  
-- The user is logged in and has an existing booking.  
-
-*When:*  
-- The user selects a booking and clicks the "Cancel Booking" button.  
-
-*Then:*  
-- The booking should be canceled.  
-- The user should receive a cancellation confirmation email.  
-- The cancellation should be reflected in the user's dashboard.
-
-- *Test Case*:
-  - *Code:*
-    ``` javascript
-    describe('User Cancel Flight Booking', function() {
-      it('should allow user to cancel flight booking', function() {
-        bookingsPage.open();
-        bookingsPage.selectBooking('Flight 101');
-        bookingsPage.cancelBooking();
-        expect(bookingsPage.getCancellationMessage()).to.include('Booking successfully canceled');
-      });
-    });
-   ```
----
-
-## 2. Admin Features
-
-### 2.1 Feature: Admin - View All Bookings  
-*Scenario:* Admin views all user bookings  
-
-*Given:*  
-- The admin is logged into the admin portal.  
-
-*When:*  
-- The admin navigates to the "Bookings" section.  
-
-*Then:*  
-- The admin should be able to see a list of all bookings with details (user name, flight, date, status).
-
-- *Test Case*:
-  - *Code:*
-   ``` javascript
-  describe('Admin View All Bookings', function() {
-    it('should allow admin to view all bookings', function() {
-       adminDashboard.open();
-       adminDashboard.viewBookings();
-       const bookings = adminDashboard.getAllBookings();
-       expect(bookings).to.be.an('array').that.is.not.empty;
-    });
+**Test Case:**
+```javascript
+describe('User Registration', function() {
+  it('should allow user to sign up successfully', function() {
+    signUpPage.open();
+    signUpPage.enterDetails('John Doe', 'john.doe@example.com', 'password123', '9876543210');
+    signUpPage.submitSignUp();
+    expect(signUpPage.getConfirmationMessage()).to.include('Account created successfully');
   });
-   ```
----
+});
+```
 
-### 2.2 Feature: Admin - Approve/Reject Booking Cancellation  
-*Scenario:* Admin approves or rejects a booking cancellation request  
+### 1.2 Feature: User - Account Verification
+#### Scenario: User verifies their account via email
+**Given:**
+The user has successfully registered and received a verification email.
 
-*Given:*  
-- The admin is logged into the admin portal.  
-- A user has requested a booking cancellation.  
+**When:**
+The user clicks the verification link.
 
-*When:*  
-- The admin reviews the request and clicks "Approve" or "Reject."  
+**Then:**
+- The account should be successfully verified.
+- The user should receive a confirmation message.
 
-*Then:*  
-- The cancellation status should be updated accordingly in the system.  
-- The user should be notified about the decision.
+**Test Case:**
+```javascript
+describe('Account Verification', function() {
+  it('should allow user to verify their account', function() {
+    verificationPage.openLink('verification_code');
+    expect(verificationPage.getVerificationStatus()).to.equal('verified');
+  });
+});
+```
 
-- *Test Case*:
-  - *Code:*
-  - ``` javascript
-    describe('Admin Approve/Reject Booking Cancellation', function() {
-      it('should allow admin to approve or reject booking cancellation request', function() {
-        adminDashboard.open();
-        adminDashboard.viewCancellationRequest('Flight 101');
-        adminDashboard.approveCancellation();
-        expect(adminDashboard.getCancellationStatus()).to.include('Approved');
-      });
-    });
-    ```
+### 1.3 Feature: User - Login/Logout
+#### Scenario: User logs in successfully
+**Given:**
+The user is on the login page.
 
----
+**When:**
+The user enters valid credentials and clicks the "Login" button.
 
-### 2.3 Feature: Admin - Manage Flight Listings  
-*Scenario:* Admin adds, updates, or deletes a flight listing  
+**Then:**
+- The user should be redirected to the dashboard.
 
-*Given:*  
-- The admin is logged into the admin portal.  
+**Test Case:**
+```javascript
+describe('User Login', function() {
+  it('should allow user to log in with valid credentials', function() {
+    loginPage.open();
+    loginPage.enterCredentials('john.doe@example.com', 'password123');
+    loginPage.submit();
+    expect(dashboardPage.isLoggedIn()).to.be.true;
+  });
+});
+```
 
-*When:*  
-- The admin navigates to the "Flight Listings" section and adds/updates/deletes a flight.  
+### 1.4 Feature: User - Profile Management
+#### Scenario: User updates profile details
+**Given:**
+The user is logged in and on the profile management page.
 
-*Then:*  
-- The flight listing should be updated accordingly in the system.  
-- The changes should be reflected on the user-facing platform.
+**When:**
+The user updates their contact or payment details and submits.
 
-- *Test Case*:
-  - *Code:*
-    ``` javascript
-     describe('Admin Manage Flight Listings', function() {
-      it('should allow admin to add or delete flight listings', function() {
-        adminDashboard.open();
-        adminDashboard.addFlight('Flight 102', 'Airline XYZ', '2023-12-20', '11:00 AM');
-        expect(adminDashboard.getFlightList()).to.include('Flight 102');
-        adminDashboard.deleteFlight('Flight 102');
-        expect(adminDashboard.getFlightList()).to.not.include('Flight 102');
-      });
-    });
-  ```
----
+**Then:**
+- The profile should be updated successfully.
 
-## 3. Travel Partner Features
+**Test Case:**
+```javascript
+describe('Profile Management', function() {
+  it('should allow user to update their profile details', function() {
+    profilePage.open();
+    profilePage.updateDetails('Jane Doe', 'jane.doe@example.com', '9876543210');
+    profilePage.saveChanges();
+    expect(profilePage.getUpdateMessage()).to.include('Profile updated successfully');
+  });
+});
+```
 
-### 3.1 Feature: Travel Partner - Add New Flights  
-**Scenario:** Travel partner adds new flights to the system  
+### 1.5 Feature: User - Password Management
+#### Scenario: User resets their password
+**Given:**
+The user clicks the "Forgot Password" link on the login page.
 
-**Given:**  
-- The travel partner is logged into their partner portal.  
+**When:**
+The user enters their email and resets the password.
 
-**When:**  
-- The travel partner adds new flight details (airline, flight number, schedule, etc.).  
+**Then:**
+- The password should be reset successfully.
+- The user should receive a confirmation email.
 
-**Then:**  
-- The new flight should be added to the flight listings.  
-- The new flight should be available for booking by users.
+**Test Case:**
+```javascript
+describe('Password Management', function() {
+  it('should allow user to reset their password', function() {
+    loginPage.open();
+    loginPage.clickForgotPassword();
+    resetPage.enterEmail('john.doe@example.com');
+    resetPage.submit();
+    expect(resetPage.getConfirmationMessage()).to.include('Password reset link sent');
+  });
+});
+```
 
-- **Test Case**:
-  - **Code:**
-    ```javascript
-    describe('Travel Partner Add New Flights', function() {
-      it('should allow partner to add new flight successfully', function() {
-        partnerDashboard.open();
-        partnerDashboard.addFlight('Airline ABC', 'Flight 101', '2023-12-15', '10:00 AM', '100');
-        expect(partnerDashboard.getFlightList()).to.include('Flight 101');
-      });
-    });
-    ```
----
+### 1.6 Feature: User - Payment Processing
+#### Scenario: User makes a secure payment
+**Given:**
+The user has selected a service and proceeds to payment.
 
-### 3.2 Feature: Travel Partner - Update Flight Details  
-**Scenario:** Travel partner updates flight details  
+**When:**
+The user enters valid payment details and confirms payment.
 
-**Given:**  
-- The travel partner is logged into their partner portal.  
+**Then:**
+- The payment should be processed successfully.
+- The user should receive a payment confirmation.
 
-**When:**  
-- The travel partner updates flight details (schedule, price, etc.).  
+**Test Case:**
+```javascript
+describe('Payment Processing', function() {
+  it('should process payment securely', function() {
+    paymentPage.open();
+    paymentPage.enterPaymentDetails('Credit Card', '4111111111111111', '12/25', '123');
+    paymentPage.submitPayment();
+    expect(paymentPage.getPaymentStatus()).to.include('Payment Successful');
+  });
+});
+```
 
-**Then:**  
-- The updated flight details should be reflected in the system.  
-- The updated information should be available for users when searching for flights.
+### 1.7 Feature: User - Notifications
+#### Scenario: User receives notifications
+**Given:**
+The user has an active booking.
 
-- **Test Case**:
-  - **Code:**
-    ```javascript
-    describe('Travel Partner Update Flight Details', function() {
-      it('should allow partner to update flight details successfully', function() {
-        partnerDashboard.open();
-        partnerDashboard.updateFlight('Flight 101', '2023-12-16', '12:00 PM');
-        expect(partnerDashboard.getFlightDetails('Flight 101')).to.include('2023-12-16');
-      });
-    });
-    ```
+**When:**
+The system sends booking updates or promotional offers.
 
----
+**Then:**
+- The user should receive notifications via email/SMS and in-app.
 
-### 3.3 Feature: Travel Partner - View Bookings  
-**Scenario:** Travel partner views flight bookings  
+**Test Case:**
+```javascript
+describe('Notifications', function() {
+  it('should deliver notifications to the user', function() {
+    notificationSystem.triggerNotification('Booking Update', 'Your flight is delayed.');
+    expect(notificationPage.getNotificationMessage()).to.include('Your flight is delayed.');
+  });
+});
+```
 
-**Given:**  
-- The travel partner is logged into their partner portal.  
+### 1.8 Feature: User - Support Requests
+#### Scenario: User creates a support ticket
+**Given:**
+The user accesses the support section.
 
-**When:**  
-- The travel partner navigates to the "Bookings" section.  
+**When:**
+The user submits a ticket for an issue or query.
 
-**Then:**  
-- The travel partner should see a list of all bookings made for their flights, including user details and booking status.
+**Then:**
+- The ticket should be created and tracked successfully.
 
-- **Test Case**:
-  - **Code:**
-    ```javascript
-    describe('Travel Partner View Bookings', function() {
-      it('should allow partner to view all bookings made for their flights', function() {
-        partnerDashboard.open();
-        partnerDashboard.viewBookings();
-        const bookings = partnerDashboard.getBookings('Flight 101');
-        expect(bookings).to.be.an('array').that.is.not.empty;
-      });
-    });
-    ```
-
----
-
-## 4. General Features
-
-### 4.1 Feature: User - View Profile  
-**Scenario:** User views their profile  
-
-**Given:**  
-- The user is logged in.  
-
-**When:**  
-- The user navigates to their profile page.  
-
-**Then:**  
-- The user's profile details (name, email, phone number) should be visible.
-
-- **Test Case**:
-  - **Code:**
-    ```javascript
-    describe('User View Profile', function() {
-      it('should allow user to view profile details', function() {
-        userProfilePage.open();
-        const profile = userProfilePage.getProfileDetails();
-        expect(profile).to.include('John Doe');
-        expect(profile).to.include('john.doe@example.com');
-      });
-    });
-    ```
+**Test Case:**
+```javascript
+describe('Support Requests', function() {
+  it('should allow user to create a support ticket', function() {
+    supportPage.open();
+    supportPage.createTicket('Issue with booking', 'I am unable to modify my booking.');
+    expect(supportPage.getTicketStatus()).to.include('Ticket Created');
+  });
+});
+```
 
 ---
 
-### 4.2 Feature: User - Edit Profile  
-**Scenario:** User edits their profile  
+## 2. Hotel Booking User Features
 
-**Given:**  
-- The user is logged in.  
+### 2.1 Feature: Hotel Search
+#### Scenario: User searches for hotels
+**Given:**
+The user is logged in and on the hotel search page.
 
-**When:**  
-- The user clicks on "Edit Profile" and updates their details (e.g., email, phone number).  
+**When:**
+The user enters valid search criteria (location, check-in/out dates, guests).
 
-**Then:**  
-- The updated details should be saved, and a confirmation message should be shown.
+**Then:**
+- Hotels matching the criteria should be displayed.
 
-- **Test Case**:
-  - **Code:**
-    ```javascript
-    describe('User Edit Profile', function() {
-      it('should allow user to edit profile details', function() {
-        userProfilePage.open();
-        userProfilePage.editProfile('Jane Doe', 'jane.doe@example.com');
-        expect(userProfilePage.getProfileDetails()).to.include('Jane Doe');
-        expect(userProfilePage.getProfileDetails()).to.include('jane.doe@example.com');
-      });
-    });
-    ```
+**Test Case:**
+```javascript
+describe('Hotel Search', function() {
+  it('should display hotels based on search criteria', function() {
+    hotelSearchPage.open();
+    hotelSearchPage.enterSearchCriteria('New York', '2024-12-20', '2024-12-25', 2);
+    expect(hotelSearchPage.getResultsCount()).to.be.above(0);
+  });
+});
+```
+
+### 2.2 Feature: Hotel Booking
+#### Scenario: User books a hotel room
+**Given:**
+The user has selected a hotel room.
+
+**When:**
+The user enters guest details and completes payment.
+
+**Then:**
+- The booking should be confirmed, and the user should receive a confirmation email.
+
+**Test Case:**
+```javascript
+describe('Hotel Booking', function() {
+  it('should allow user to book a hotel room', function() {
+    hotelBookingPage.open();
+    hotelBookingPage.selectRoom('Deluxe Room');
+    hotelBookingPage.enterGuestDetails('John Doe', 'john.doe@example.com');
+    hotelBookingPage.completePayment('Credit Card', '4111111111111111', '12/25', '123');
+    expect(hotelBookingPage.getConfirmationMessage()).to.include('Booking Confirmed');
+  });
+});
+```
+
+---
+
+## 3. Flight Booking User Features
+
+### 3.1 Feature: Flight Search
+#### Scenario: User searches for flights
+**Given:**
+The user is logged in and on the flight search page.
+
+**When:**
+The user enters valid search criteria (departure, arrival, dates, passengers).
+
+**Then:**
+- Flights matching the criteria should be displayed.
+
+**Test Case:**
+```javascript
+describe('Flight Search', function() {
+  it('should display flights based on search criteria', function() {
+    flightSearchPage.open();
+    flightSearchPage.enterSearchCriteria('New York', 'Los Angeles', '2024-12-20', 1);
+    expect(flightSearchPage.getResultsCount()).to.be.above(0);
+  });
+});
+```
+
+### 3.2 Feature: Flight Booking
+#### Scenario: User books a flight
+**Given:**
+The user has selected a flight.
+
+**When:**
+The user enters passenger details and completes payment.
+
+**Then:**
+- The booking should be confirmed, and the user should receive a confirmation email.
+
+**Test Case:**
+```javascript
+describe('Flight Booking', function() {
+  it('should allow user to book a flight', function() {
+    flightBookingPage.open();
+    flightBookingPage.selectFlight('AI101');
+    flightBookingPage.enterPassengerDetails('John Doe');
+    flightBookingPage.completePayment('Credit Card', '4111111111111111', '12/25', '123');
+    expect(flightBookingPage.getConfirmationMessage()).to.include('Booking Confirmed');
+  });
+});
+```
+
+---
+
+## 4. Travel Booking Partner Features
+
+### 4.1 Feature: Manage Flights
+#### Scenario: Partner adds a new flight
+**Given:**
+The travel partner is logged in and on the flight management page.
+
+**When:**
+The partner enters flight details and submits the form.
+
+**Then:**
+- The new flight should be added successfully.
+
+**Test Case:**
+```javascript
+describe('Add New Flight', function() {
+  it('should allow partner to add a new flight', function() {
+    flightManagementPage.open();
+    flightManagementPage.addFlight('AI102', 'New York', 'Chicago', '2024-12-21', '10:00 AM', '12:00 PM', 200);
+    expect(flightManagementPage.getConfirmationMessage()).to.include('Flight Added Successfully');
+  });
+});
+```
+
+### 4.2 Feature: Approve Bookings
+#### Scenario: Partner approves a booking
+**Given:**
+The travel partner has received a booking request.
+
+**When:**
+The partner approves the booking.
+
+**Then:**
+- The booking status should be updated to "Approved."
+
+**Test Case:**
+```javascript
+describe('Approve Booking', function() {
+  it('should allow partner to approve a booking', function() {
+    bookingManagementPage.open();
+    bookingManagementPage.selectBooking('BK12345');
+    bookingManagementPage.approveBooking();
+    expect(bookingManagementPage.getBookingStatus()).to.equal('Approved');
+  });
+});
+```
+
+### 4.3 Feature: Update Flight Details
+#### Scenario: Partner updates flight information
+**Given:**
+The travel partner is on the flight management page.
+
+**When:**
+The partner modifies existing flight details and submits the update.
+
+**Then:**
+- The flight details should be updated successfully.
+
+**Test Case:**
+```javascript
+describe('Update Flight Details', function() {
+  it('should allow partner to update flight details', function() {
+    flightManagementPage.open();
+    flightManagementPage.updateFlight('AI102', { departureTime: '11:00 AM', price: 250 });
+    expect(flightManagementPage.getUpdateMessage()).to.include('Flight Details Updated');
+  });
+});
+```
+
+### 4.4 Feature: View Booking Reports
+#### Scenario: Partner views a report of bookings
+**Given:**
+The travel partner is logged in.
+
+**When:**
+The partner navigates to the booking reports section.
+
+**Then:**
+- A detailed report of bookings should be displayed.
+
+**Test Case:**
+```javascript
+describe('View Booking Reports', function() {
+  it('should allow partner to view booking reports', function() {
+    bookingReportsPage.open();
+    expect(bookingReportsPage.getReportsCount()).to.be.above(0);
+  });
+});
+```
+
 
 ---
 
@@ -440,7 +454,51 @@ This section evaluates the platform's ease of maintenance and adaptability to ch
 
 ---
 
-## 6. Conclusion
+## 6. Swimlane Diagram 
+
+![testswimlane](https://github.com/user-attachments/assets/ec3cf057-fc7f-4afb-98f9-900489e4205a)
+
+Code
+```plantuml
+@startuml
+|General User|
+start
+:Registration;
+:Account Verification;
+:Login/Logout;
+:Profile Management;
+:Password Management;
+:Payment Processing;
+:Notifications;
+:Support Requests;
+stop
+
+|Hotel Booking User|
+start
+:Hotel Search;
+:Hotel Booking;
+stop
+
+|Flight Booking User|
+start
+:Flight Search;
+:Flight Booking;
+stop
+
+|Travel Booking Partner|
+start
+:Manage Flights;
+:Approve Bookings;
+:Update Flight Details;
+:View Booking Reports;
+stop
+@enduml
+
+```
+
+---
+
+## 7. Conclusion
 
 The test plan for the MakeMyTrip platform ensures that all critical functionalities related to user, admin, and travel partner features are thoroughly tested. By covering both positive and negative scenarios, we aim to validate the platform’s stability, usability, and performance. The integration of all features and their seamless execution is essential to provide users with a smooth and efficient experience while interacting with the system.
 
